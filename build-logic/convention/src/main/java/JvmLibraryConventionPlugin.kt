@@ -1,4 +1,3 @@
-package com.wcp.convention
 /*
  * Copyright 2023 The Android Open Source Project
  *
@@ -15,6 +14,7 @@ package com.wcp.convention
  *   limitations under the License.
  */
 
+import com.phayarsar.configureKotlinJvm
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

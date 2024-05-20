@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.wcp.phayarsar"
+group = "com.wcp.convention"
 
 repositories {
     mavenCentral()
@@ -29,35 +29,35 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidApplicationCompose") {
-            id = "com.phayarsar.android.application.compose"
+            id = "phayarsar.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
         register("androidApplication") {
-            id = "com.phayarsar.android.application"
+            id = "phayarsar.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidLibraryCompose") {
-            id = "com.phayarsar.android.library.compose"
+            id = "phayarsar.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
         register("androidLibrary") {
-            id = "com.phayarsar.android.library"
+            id = "phayarsar.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
         register("androidFeature") {
-            id = "com.phayarsar.android.feature"
+            id = "phayarsar.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
         }
         register("androidHilt") {
-            id = "com.phayarsar.android.hilt"
+            id = "phayarsar.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
         register("androidFlavors") {
-            id = "com.phayarsar.android.application.flavors"
+            id = "phayarsar.android.application.flavors"
             implementationClass = "AndroidApplicationFlavorsConventionPlugin"
         }
         register("jvmLibrary") {
-            id = "com.phayarsar.jvm.library"
+            id = "phayarsar.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
         }
     }

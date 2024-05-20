@@ -1,4 +1,4 @@
-package com.wcp.convention/*
+/*
  * Copyright 2023 The Android Open Source Project
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,7 @@ package com.wcp.convention/*
  */
 
 import com.android.build.api.dsl.ApplicationExtension
+import com.phayarsar.configureFlavors
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
