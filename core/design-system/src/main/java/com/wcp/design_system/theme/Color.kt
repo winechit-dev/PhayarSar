@@ -1,4 +1,4 @@
-package com.wcp.phayarsar.ui.theme
+package com.wcp.design_system.theme
 
 import androidx.compose.ui.graphics.Color
 
