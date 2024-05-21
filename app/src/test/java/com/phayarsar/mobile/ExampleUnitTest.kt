@@ -1,4 +1,4 @@
-package com.wcp.design_system
+package com.phayarsar.mobile
 
 import org.junit.Test
 

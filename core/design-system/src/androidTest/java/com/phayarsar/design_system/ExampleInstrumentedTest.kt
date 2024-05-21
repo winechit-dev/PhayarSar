@@ -1,4 +1,4 @@
-package com.wcp.design_system
+package com.phayarsar.design_system
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

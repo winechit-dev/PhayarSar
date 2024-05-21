@@ -1,4 +1,4 @@
-package com.wcp.phayarsar
+package com.phayarsar.design_system
 
 import org.junit.Test
 

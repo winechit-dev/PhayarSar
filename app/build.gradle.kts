@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.wcp.phayarsar"
+    namespace = "com.phayarsar.mobile"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.wcp.phayarsar"
+        applicationId = "com.phayarsar.mobile"
         versionCode = 1
         versionName = "1.0.0" // X.Y.Z; X = Major, Y = minor, Z = Patch level
 

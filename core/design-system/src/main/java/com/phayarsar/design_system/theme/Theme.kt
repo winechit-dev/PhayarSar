@@ -1,4 +1,4 @@
-package com.wcp.design_system.theme
+package com.phayarsar.design_system.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
