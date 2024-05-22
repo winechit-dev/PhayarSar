@@ -23,6 +23,7 @@ dependencyResolutionManagement {
 rootProject.name = "PhayarSar"
 include(":app")
 include(":core:design-system")
+include(":core:localization")
 include(":feature:home")
 include(":feature:setting")
-include(":core:localization")
+
