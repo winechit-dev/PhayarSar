@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.wcp.design_system"
+    namespace = "com.phayarsar.design_system"
 
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
