@@ -36,6 +36,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
 
                 add("androidTestImplementation", libs.findLibrary("androidx.lifecycle.runtimeTesting").get())
+                add("androidTestImplementation", libs.findLibrary("androidx.junit").get())
+                add("testImplementation", libs.findLibrary("junit").get())
             }
         }
     }
