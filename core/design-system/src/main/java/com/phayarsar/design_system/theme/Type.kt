@@ -79,21 +79,21 @@ val PysTypography = Typography(
     ),
     bodyLarge = TextStyle(
         fontFamily = quicksandFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         platformStyle = platformStyle
     ),
     bodyMedium = TextStyle(
         fontFamily = quicksandFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 14.sp,
         lineHeight = 18.sp,
         platformStyle = platformStyle
     ),
     bodySmall = TextStyle(
         fontFamily = quicksandFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 12.sp,
         lineHeight = 18.sp,
         platformStyle = platformStyle
