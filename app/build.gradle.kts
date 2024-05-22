@@ -45,6 +45,8 @@ android {
 
 dependencies {
     implementation(project(":core:design-system"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:setting"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
