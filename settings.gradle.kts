@@ -23,3 +23,4 @@ dependencyResolutionManagement {
 rootProject.name = "PhayarSar"
 include(":app")
 include(":core:design-system")
+include(":feature:home")
