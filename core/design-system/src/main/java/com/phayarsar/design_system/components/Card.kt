@@ -23,7 +23,7 @@ import com.phayarsar.design_system.utils.softShadow
 @Composable
 fun PysCard(
     modifier: Modifier = Modifier,
-    shape: Shape = MaterialTheme.shapes.small,
+    shape: Shape = MaterialTheme.shapes.large,
     elevation: Dp = 0.dp,
     color: Color = MaterialTheme.colorScheme.surface,
     onClick: () -> Unit,
@@ -52,7 +52,7 @@ fun PysCard(
 @Composable
 fun PysCard(
     modifier: Modifier = Modifier,
-    shape: Shape = MaterialTheme.shapes.small,
+    shape: Shape = MaterialTheme.shapes.large,
     elevation: Dp = 0.dp,
     color: Color = MaterialTheme.colorScheme.surface,
     content: @Composable () -> Unit
