@@ -176,7 +176,7 @@ private fun PrayerItem(label: String, showDivider: Boolean = true, onClick: () -
             .clickable(onClick = onClick)
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_playlist_add_24),
+            painter = painterResource(id = R.drawable.ic_pray),
             contentDescription = null,
             modifier = Modifier.size(24.dp),
             tint = Color.White
