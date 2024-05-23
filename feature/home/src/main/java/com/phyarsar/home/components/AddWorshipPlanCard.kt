@@ -27,7 +27,7 @@ fun AddWorshipPlanCard(
     val localization = Vocabulary.localization
     PysCard(
         modifier = modifier,
-        color = MaterialTheme.colorScheme.secondaryContainer,
+        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
     ) {
         Row(
             modifier = Modifier.padding(16.dp),

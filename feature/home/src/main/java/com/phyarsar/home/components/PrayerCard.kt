@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import charcoal
 import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
@@ -38,13 +39,13 @@ fun PrayerCard(
     subtitle: String,
     duration: String,
     list: List<String>,
-    color: Color = MaterialTheme.colorScheme.primaryContainer,
+    color: Color = MaterialTheme.colorScheme.primary,
     localization: LocalizationModel = Vocabulary.localization
 ) {
     val gradient = Brush.verticalGradient(
         colors = listOf(
             color.copy(alpha = 0.8f),
-            color.copy(alpha = 0.8f),
+            color.copy(alpha = 0.9f),
             color.copy(alpha = 1f)
         )
     )
@@ -113,7 +114,8 @@ private fun PrayerCollectionSection(
     if (list.size <= 3) return
     PysCard(
         onClick = onClick,
-        color = MaterialTheme.colorScheme.onPrimary
+        color = Color.White,
+        shape = MaterialTheme.shapes.medium,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -125,15 +127,18 @@ private fun PrayerCollectionSection(
             Text(
                 text = localization.view_collection,
                 style = MaterialTheme.typography.labelMedium,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                color = charcoal
             )
             Text(
                 text = localization.plus_x_more.format(list.size - 3),
                 style = MaterialTheme.typography.labelMedium,
+                color = charcoal
             )
             Icon(
                 painter = painterResource(id = R.drawable.ic_navigate_next_24),
-                contentDescription = null
+                contentDescription = null,
+                tint = charcoal
             )
         }
     }
