@@ -18,15 +18,15 @@ class LocalizationModel {
 
     var finished = "Finished!"
 
-    var today_pray_time_x = "Today's Pray Time  {$} min(s)"
+    var today_pray_time_x = "Today's Pray Time  %s min(s)"
 
     var today_pray_time = "Today's Pray Time  "
 
-    var x_min = "{$} min"
+    var x_min = "%s min"
 
-    var x_sec = "{$} sec"
+    var x_sec = "%s sec"
 
-    var x_hour_y_min = "{$} hr {$} min"
+    var x_hour_y_min = "%s hr %s min"
 
     var btn_add = "Add"
 
@@ -44,7 +44,7 @@ class LocalizationModel {
 
     var themes_and_settings = "Themes & Settings"
 
-    var about_x = "About {$}"
+    var about_x = "About %s"
 
     var jasmine = "Jasmine"
 
@@ -111,7 +111,7 @@ class LocalizationModel {
 
     var view_collection = "View collection"
 
-    var plus_x_more = "+{$} more"
+    var plus_x_more = "+%s more"
 
     var other_prayers = "Others"
 
@@ -163,7 +163,7 @@ class LocalizationModel {
 
     var before = "before."
 
-    var x_min_s = "{$} min(s)"
+    var x_min_s = "%s min(s)"
 
     var su = "SU"
 
@@ -182,9 +182,9 @@ class LocalizationModel {
     var worship_plan = "Worship plans"
     var view_more = "See all"
 
-    var notify_x_mins_before = "Notify {$} min(s) before"
+    var notify_x_mins_before = "Notify %s min(s) before"
 
-    var x_prayers = "{$} Prayers"
+    var x_prayers = "%s Prayers"
 
     var not_specified = "Not specified"
 
@@ -195,7 +195,7 @@ class LocalizationModel {
 
     var plan_detail = "Plan Detail"
 
-    var prayers_x = "Prayers ({$})"
+    var prayers_x = "Prayers (%s)"
 
     var selected_days = "Selected days"
     var remind_me_before = "Remind me before"
@@ -206,7 +206,7 @@ class LocalizationModel {
 
     var plan_deleted_successfully = "Plan deleted successfully!"
 
-    var x_of_y = "{$} of {$}"
+    var x_of_y = "%s of %s"
 
     var reset_prayers_theme = "Reset prayers theme data"
 
@@ -285,7 +285,7 @@ class LocalizationModel {
 
     var search_placeholder = "Prayer name, plan, keywords..."
 
-    var x_found = "({$}) found"
+    var x_found = "(%s) found"
 
     var prayers = "Prayers"
 
