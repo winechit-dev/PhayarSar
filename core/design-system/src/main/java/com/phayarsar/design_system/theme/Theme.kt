@@ -61,6 +61,7 @@ import rust_90
 import scrimDark
 import scrimLight
 import surfaceDark
+import surfaceVariantLight
 import ultraViolet_40
 import ultraViolet_90
 
@@ -92,6 +93,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = charcoal,
     surface = mono_0,
     onSurface = charcoal,
+    surfaceVariant = surfaceVariantLight,
     outline = outlineLight,
     scrim = scrimLight,
 )

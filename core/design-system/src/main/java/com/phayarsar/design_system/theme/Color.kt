@@ -3,6 +3,7 @@ import androidx.compose.ui.graphics.Color
 val errorLight = Color(0xFFBA1A1A)
 val outlineLight = Color(0xFF707975)
 val scrimLight = Color(0xFF000000)
+val surfaceVariantLight = Color(0xFFF0F0F0)
 
 val primaryDark = Color(0xFF9AD2C1)
 val onPrimaryDark = Color(0xFF00382D)
