@@ -37,21 +37,21 @@ val platformStyle = PlatformTextStyle(
 val PysTypography = Typography(
     headlineLarge = TextStyle(
         fontFamily = dmSerifDisplayFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 32.sp,
         lineHeight = 38.4.sp,
         platformStyle = platformStyle
     ),
     headlineMedium = TextStyle(
         fontFamily = dmSerifDisplayFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 28.sp,
         lineHeight = 36.sp,
         platformStyle = platformStyle
     ),
     headlineSmall = TextStyle(
         fontFamily = dmSerifDisplayFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 24.sp,
         lineHeight = 32.sp,
         platformStyle = platformStyle
@@ -107,14 +107,14 @@ val PysTypography = Typography(
     ),
     labelMedium = TextStyle(
         fontFamily = quicksandFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 12.sp,
         lineHeight = 16.sp,
         platformStyle = platformStyle
     ),
     labelSmall = TextStyle(
         fontFamily = quicksandFamily,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 10.sp,
         lineHeight = 16.sp,
         platformStyle = platformStyle
