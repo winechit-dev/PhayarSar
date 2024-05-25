@@ -102,7 +102,6 @@ private fun OtherPrayerItem(item: PrayerModel, onClick: (PrayerModel) -> Unit) {
             }
         }
     }
-
 }
 
 @ThemePreviews
@@ -119,16 +118,16 @@ fun OtherPrayerSectionPreview() {
                 otherPrayerSection(
 
                     list = listOf(
-                        PrayerModel("1", "Prayer 1"),
-                        PrayerModel("2", "Prayer 2"),
-                        PrayerModel("3", "Prayer 3"),
-                        PrayerModel("4", "Prayer 4"),
-                        PrayerModel("5", "Prayer 5"),
-                        PrayerModel("6", "Prayer 6"),
-                        PrayerModel("7", "Prayer 7"),
-                        PrayerModel("8", "Prayer 8"),
-                        PrayerModel("9", "Prayer 9"),
-                        PrayerModel("10", "Prayer 10")
+                        PrayerModel("1", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး"),
+                        PrayerModel("2", "ရှင်သီဝလိ ဂါထာတော်"),
+                        PrayerModel("3", "ဓမ္မစကြာ တရားတော်"),
+                        PrayerModel("4", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး"),
+                        PrayerModel("5", "ရှင်သီဝလိ ဂါထာတော်"),
+                        PrayerModel("6", "ဓမ္မစကြာ တရားတော်"),
+                        PrayerModel("7", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး"),
+                        PrayerModel("8", "ရှင်သီဝလိ ဂါထာတော်"),
+                        PrayerModel("9", "ဓမ္မစကြာ တရားတော်"),
+                        PrayerModel("10", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး")
                     ),
                     onClick = {}
                 )
