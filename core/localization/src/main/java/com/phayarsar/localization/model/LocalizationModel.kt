@@ -6,6 +6,8 @@ val MYANMAR = Locale("mm")
 val ENGLISH = Locale("en")
 
 class LocalizationModel {
+    var phayarsar = "PhayarSar"
+
     var welcome_to_phayarsar = "Welcome to \nPhayarSar"
 
     var onboarding_desc =
@@ -300,4 +302,8 @@ class LocalizationModel {
     var licenses = "Swift packages used"
 
     var websites_referenced_for_prayers = "Referenced websites for prayers"
+
+    var prayerSubTitle = "ဘုရားကန်တော့"
+
+    var prayerTitle = "ဘုရားရှိခိုး ဂါထာများ"
 }

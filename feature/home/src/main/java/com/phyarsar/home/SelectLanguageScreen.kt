@@ -26,6 +26,7 @@ import com.phayarsar.design_system.components.PysTextButton
 import com.phayarsar.design_system.components.PysTopAppBar
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.localization.Vocabulary
+import com.phyarsar.home.model.LanguageModel
 
 @Composable
 fun SelectLanguageScreen() {
@@ -68,7 +69,7 @@ fun SelectLanguageScreen() {
 }
 
 @Composable
-fun SelectLanguageItem(languageItem: LanguageDummyModel) {
+fun SelectLanguageItem(languageItem: LanguageModel) {
 
     ConstraintLayout(
         modifier = Modifier
@@ -134,7 +135,7 @@ fun SelectLanguageItem(languageItem: LanguageDummyModel) {
 private fun SelectLanguageItemPreview() {
     PysPreview {
         SelectLanguageItem(
-            LanguageDummyModel(
+            LanguageModel(
                 languageName = "English",
                 languageNotation = "(English)",
                 image = R.drawable.ic_uk_flag,
