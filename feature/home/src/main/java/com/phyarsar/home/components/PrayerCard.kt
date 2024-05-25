@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -149,6 +150,7 @@ private fun PrayerListSection(list: List<String>) {
     PysCard(
         color = Color.Black.copy(alpha = 0.4f),
         modifier = Modifier.fillMaxWidth()
+            .heightIn(max = 200.dp)// Added height constraint to prevent infinite height
     ) {
         LazyColumn(
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
