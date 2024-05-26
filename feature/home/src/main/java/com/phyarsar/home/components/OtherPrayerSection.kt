@@ -65,7 +65,7 @@ fun LazyListScope.otherPrayerSection(
 
 @Composable
 private fun OtherPrayerItem(item: PrayerModel, onClick: (PrayerModel) -> Unit) {
-    PysCard(
+    PysCard( // Todo: add   modifier = Modifier.padding(top = 8.dp),
         onClick = { onClick(item) },
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surfaceVariant
@@ -112,8 +112,7 @@ fun OtherPrayerSectionPreview() {
             modifier = Modifier.fillMaxSize()
         ) {
             LazyColumn(
-                modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                modifier = Modifier.padding(16.dp)
             ) {
                 otherPrayerSection(
 

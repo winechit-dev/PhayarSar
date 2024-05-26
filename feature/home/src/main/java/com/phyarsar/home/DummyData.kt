@@ -18,6 +18,8 @@ val languageList = listOf(
     )
 )
 
+// ToDo: move to previewData object
+// ToDo: rename previewPrayerList
 val prayerList = listOf(
     "သြကာသ ကန်တော့ချိုး",
     "စိန်ရောင်ခြည် ဘုရားပင့်",
@@ -27,6 +29,7 @@ val prayerList = listOf(
     "နတ်ပင့်"
 )
 
+// ToDo: rename previewOtherPrayerList
 val otherPrayerList = listOf(
     PrayerModel("1", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး"),
     PrayerModel("2", "ရှင်သီဝလိ ဂါထာတော်"),

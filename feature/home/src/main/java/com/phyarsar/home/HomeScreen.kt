@@ -32,6 +32,10 @@ import com.phyarsar.home.components.AddWorshipPlanCard
 import com.phyarsar.home.components.PrayerCard
 import com.phyarsar.home.components.otherPrayerSection
 
+// ToDo:
+//  create HomeUiState data class
+//  add prayerList, otherPrayerList to HomeUiState
+//  move ui code to HomeContent component
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
     val localization = Vocabulary.localization
@@ -40,7 +44,7 @@ fun HomeScreen(onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxSize()
             .padding(LocalSpacing.current.space20),
-        verticalArrangement = Arrangement.spacedBy(20.dp)
+        verticalArrangement = Arrangement.spacedBy(20.dp) // Todo: move to Padding
 
     ) {
         item {
@@ -48,10 +52,11 @@ fun HomeScreen(onClick: () -> Unit) {
         }
 
         item {
+            // ToDo: move to headerSection
             HorizontalDivider(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = LocalSpacing.current.space16)
+                    .padding(top = LocalSpacing.current.space16) // ToDo: remove padding
             )
         }
 
@@ -63,7 +68,7 @@ fun HomeScreen(onClick: () -> Unit) {
             PrayerCard(
                 title = localization.prayerTitle,
                 subtitle = localization.prayerSubTitle,
-                duration = "0",
+                duration = "0", // ToDo: set duration to 8
                 list = prayerList,
             )
         }
@@ -75,6 +80,8 @@ fun HomeScreen(onClick: () -> Unit) {
     }
 }
 
+
+// ToDo: rename to HeaderSection
 @Composable
 fun HeaderSession(
     localization: LocalizationModel = Vocabulary.localization,
@@ -113,7 +120,7 @@ fun HeaderSession(
             Icon(
                 painter = painterResource(id = R.drawable.ic_search),
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = MaterialTheme.colorScheme.primary, // Todo: change to onPrimary
                 modifier = Modifier
                     .size(24.dp)
                     .align(Alignment.Center)
