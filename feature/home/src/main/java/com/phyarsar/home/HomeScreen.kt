@@ -28,6 +28,8 @@ import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.localization.Vocabulary
 import com.phayarsar.localization.model.LocalizationModel
+import com.phyarsar.home.PreviewData.previewOtherPrayerList
+import com.phyarsar.home.PreviewData.previewPrayerList
 import com.phyarsar.home.components.AddWorshipPlanCard
 import com.phyarsar.home.components.PrayerCard
 import com.phyarsar.home.components.otherPrayerSection
@@ -43,89 +45,88 @@ fun HomeScreen(onClick: () -> Unit) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(LocalSpacing.current.space20),
-        verticalArrangement = Arrangement.spacedBy(20.dp) // Todo: move to Padding
-
+            .padding(top = LocalSpacing.current.space20)
+            .padding(horizontal = LocalSpacing.current.space20)
     ) {
         item {
-            HeaderSession(onClick = onClick)
+            HeaderSection(onClick = onClick)
         }
 
         item {
-            // ToDo: move to headerSection
-            HorizontalDivider(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = LocalSpacing.current.space16) // ToDo: remove padding
+            AddWorshipPlanCard(
+                modifier = Modifier.padding(bottom = LocalSpacing.current.space20)
             )
-        }
-
-        item {
-            AddWorshipPlanCard()
         }
 
         item {
             PrayerCard(
                 title = localization.prayerTitle,
                 subtitle = localization.prayerSubTitle,
-                duration = "0", // ToDo: set duration to 8
-                list = prayerList,
+                duration = "8",
+                list = previewPrayerList,
+                modifier = Modifier.padding(bottom = LocalSpacing.current.space20)
             )
         }
 
         otherPrayerSection(
-            list = otherPrayerList,
+            list = previewOtherPrayerList,
             onClick = {}
         )
     }
 }
 
-
-// ToDo: rename to HeaderSection
 @Composable
-fun HeaderSession(
+fun HeaderSection(
     localization: LocalizationModel = Vocabulary.localization,
     onClick: () -> Unit = {}
 ) {
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight(),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
+    Column {
 
-        Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Text(
                 text = localization.phayarsar,
                 style = MaterialTheme.typography.headlineLarge
             )
 
-            Text(
-                text = String.format(localization.today_pray_time_x, 0),
-                style = MaterialTheme.typography.bodyLarge,
+            Box(
                 modifier = Modifier
-                    .padding(top = LocalSpacing.current.space8)
-            )
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.5f))
+                    .clickable { onClick() }
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_search),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onPrimary,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .align(Alignment.Center)
+                )
+            }
         }
 
-        Box(
+        Text(
+            text = String.format(localization.today_pray_time_x, 0),
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
-                .size(40.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.5f))
-                .clickable { onClick() }
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_search),
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary, // Todo: change to onPrimary
-                modifier = Modifier
-                    .size(24.dp)
-                    .align(Alignment.Center)
-            )
-        }
+                .padding(top = LocalSpacing.current.space8)
+        )
+
+        HorizontalDivider(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(
+                    top = LocalSpacing.current.space20,
+                    bottom = LocalSpacing.current.space20
+                )
+        )
     }
 }
 
@@ -133,7 +134,7 @@ fun HeaderSession(
 @Composable
 private fun HeaderSessionPreview() {
     PysPreview {
-        HeaderSession()
+        HeaderSection()
     }
 }
 
