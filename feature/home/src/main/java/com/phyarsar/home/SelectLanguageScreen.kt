@@ -18,13 +18,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.components.PysTextButton
 import com.phayarsar.design_system.components.PysTopAppBar
+import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
+import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.localization.Vocabulary
 import com.phyarsar.home.PreviewData.languageList
 import com.phyarsar.home.model.LanguageModel
@@ -37,7 +38,6 @@ fun SelectLanguageScreen() {
         topBar = {
             PysTopAppBar(
                 title = localization.choose_a_language,
-                onNavigateUp = {},
                 colors = MaterialTheme.colorScheme.surfaceContainerLowest,
                 actions = {
                     PysTextButton(
@@ -56,7 +56,8 @@ fun SelectLanguageScreen() {
             PysCard(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp, end = 20.dp, top = 30.dp),
+                    .padding(horizontal = LocalSpacing.current.space20)
+                    .padding(top = LocalSpacing.current.space30),
                 color = MaterialTheme.colorScheme.surfaceContainerLowest
             ) {
                 LazyColumn(modifier = Modifier) {
@@ -75,7 +76,7 @@ fun SelectLanguageItem(languageItem: LanguageModel) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp),
+            .padding(LocalSpacing.current.space20),
     ) {
         val (imgFlag, englishName, myanmarName, imgCheck) = createRefs()
 
@@ -131,7 +132,7 @@ fun SelectLanguageItem(languageItem: LanguageModel) {
 }
 
 
-@Preview
+@ThemePreviews
 @Composable
 private fun SelectLanguageItemPreview() {
     PysPreview {
@@ -146,7 +147,7 @@ private fun SelectLanguageItemPreview() {
     }
 }
 
-@Preview
+@ThemePreviews
 @Composable
 private fun SelectLanguageScreenPreview() {
     PysPreview {
