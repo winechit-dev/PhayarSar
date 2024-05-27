@@ -16,11 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.phayarsar.design_system.components.PysButton
 import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
+import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.localization.Vocabulary
 import com.phyarsar.home.R
 
@@ -37,9 +37,9 @@ fun WelcomeScreen() {
         Spacer(modifier = Modifier.height(LocalSpacing.current.space38))
 
         Image(
-            painter = painterResource(id = R.drawable.ic_uk_flag),
+            painter = painterResource(id = R.drawable.ic_launcher_playstore),
             contentDescription = null,
-            modifier = Modifier.size(80.dp),
+            modifier = Modifier.size(90.dp),
             contentScale = ContentScale.Crop
         )
 
@@ -67,7 +67,7 @@ fun WelcomeScreen() {
     }
 }
 
-@Preview
+@ThemePreviews
 @Composable
 private fun WelcomeScreenPreview() {
     PysPreview {
