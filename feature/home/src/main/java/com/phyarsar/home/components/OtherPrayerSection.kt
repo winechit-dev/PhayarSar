@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.phayarsar.design_system.components.PysCard
+import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.design_system.utils.bounceClick
@@ -34,11 +35,11 @@ fun LazyListScope.otherPrayerSection(
 ) {
     item {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(LocalSpacing.current.space12),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 8.dp)
+                .padding(bottom = LocalSpacing.current.space8)
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_other_books),
@@ -65,16 +66,17 @@ fun LazyListScope.otherPrayerSection(
 
 @Composable
 private fun OtherPrayerItem(item: PrayerModel, onClick: (PrayerModel) -> Unit) {
-    PysCard( // Todo: add   modifier = Modifier.padding(top = 8.dp),
+    PysCard(
         onClick = { onClick(item) },
         shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.surfaceVariant
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        modifier = Modifier.padding(top = LocalSpacing.current.space8)
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(LocalSpacing.current.space12),
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
-                .padding(12.dp)
+                .padding(LocalSpacing.current.space12)
                 .fillMaxWidth()
                 .bounceClick()
         ) {
@@ -85,7 +87,7 @@ private fun OtherPrayerItem(item: PrayerModel, onClick: (PrayerModel) -> Unit) {
             )
             Column {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(LocalSpacing.current.space12),
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()
                 ) {
@@ -112,7 +114,7 @@ fun OtherPrayerSectionPreview() {
             modifier = Modifier.fillMaxSize()
         ) {
             LazyColumn(
-                modifier = Modifier.padding(16.dp)
+                modifier = Modifier.padding(LocalSpacing.current.space16)
             ) {
                 otherPrayerSection(
 
