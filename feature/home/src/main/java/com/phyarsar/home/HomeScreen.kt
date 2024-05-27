@@ -24,13 +24,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.phayarsar.design_system.components.PysCard
+import com.phayarsar.design_system.components.PysOutlinedButton
 import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
+import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.localization.Vocabulary
 import com.phayarsar.localization.model.LocalizationModel
 import com.phyarsar.home.PreviewData.previewOtherPrayerList
 import com.phyarsar.home.PreviewData.previewPrayerList
-import com.phyarsar.home.components.AddWorshipPlanCard
 import com.phyarsar.home.components.PrayerCard
 import com.phyarsar.home.components.otherPrayerSection
 
@@ -130,7 +132,7 @@ fun HeaderSection(
     }
 }
 
-@Preview
+@ThemePreviews
 @Composable
 private fun HeaderSessionPreview() {
     PysPreview {
@@ -138,7 +140,49 @@ private fun HeaderSessionPreview() {
     }
 }
 
-@Preview
+
+@Composable
+fun AddWorshipPlanCard(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
+    val localization = Vocabulary.localization
+    PysCard(
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+    ) {
+        Row(
+            modifier = Modifier.padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_playlist_add_24),
+                contentDescription = "Add Worship Plan",
+                modifier = Modifier.size(32.dp)
+            )
+            Text(
+                text = localization.worship_plan_helps_you_pray,
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.weight(1f)
+            )
+            PysOutlinedButton(
+                onClick = onClick,
+                text = localization.add_new
+            )
+        }
+    }
+}
+
+@ThemePreviews
+@Composable
+private fun AddWorshipPlanCardPreview() {
+    PysPreview {
+        AddWorshipPlanCard()
+    }
+}
+
+@ThemePreviews
 @Composable
 private fun HomeScreenPreview() {
     PysPreview {
