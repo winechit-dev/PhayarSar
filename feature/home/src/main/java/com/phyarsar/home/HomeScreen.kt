@@ -22,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.components.PysOutlinedButton
@@ -42,7 +41,12 @@ import com.phyarsar.home.components.otherPrayerSection
 //  move ui code to HomeContent component
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
-    val localization = Vocabulary.localization
+
+    HomeContent(onClick = onClick)
+}
+
+@Composable
+fun HomeContent(localization: LocalizationModel = Vocabulary.localization,onClick: () -> Unit) {
 
     LazyColumn(
         modifier = Modifier
@@ -184,8 +188,8 @@ private fun AddWorshipPlanCardPreview() {
 
 @ThemePreviews
 @Composable
-private fun HomeScreenPreview() {
+private fun HomeContentPreview() {
     PysPreview {
-        HomeScreen(onClick = {})
+        HomeContent(onClick = {})
     }
 }
