@@ -27,3 +27,5 @@ include(":core:localization")
 include(":feature:home")
 include(":feature:setting")
 
+include(":core:data")
+include(":core:domain")
