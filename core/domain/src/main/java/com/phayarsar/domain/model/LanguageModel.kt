@@ -1,4 +1,4 @@
-package com.phyarsar.home.model
+package com.phayarsar.domain.model
 
 data class LanguageModel (
     val languageName:String,
