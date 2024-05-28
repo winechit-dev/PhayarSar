@@ -18,11 +18,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.components.PysOutlinedButton
 import com.phayarsar.design_system.theme.LocalSpacing
@@ -31,22 +34,24 @@ import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.localization.Vocabulary
 import com.phayarsar.localization.model.LocalizationModel
 import com.phyarsar.home.PreviewData.previewOtherPrayerList
-import com.phyarsar.home.PreviewData.previewPrayerList
 import com.phyarsar.home.components.PrayerCard
 import com.phyarsar.home.components.otherPrayerSection
 
-// ToDo:
-//  create HomeUiState data class
-//  add prayerList, otherPrayerList to HomeUiState
-//  move ui code to HomeContent component
 @Composable
 fun HomeScreen(onClick: () -> Unit) {
 
-    HomeContent(onClick = onClick)
+    val viewModel: HomeViewModel = hiltViewModel()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+    HomeContent(uiState = uiState, onClick = onClick)
 }
 
 @Composable
-fun HomeContent(localization: LocalizationModel = Vocabulary.localization,onClick: () -> Unit) {
+fun HomeContent(
+    uiState: HomeUiState,
+    onClick: () -> Unit,
+    localization: LocalizationModel = Vocabulary.localization
+) {
 
     LazyColumn(
         modifier = Modifier
@@ -69,13 +74,13 @@ fun HomeContent(localization: LocalizationModel = Vocabulary.localization,onClic
                 title = localization.prayerTitle,
                 subtitle = localization.prayerSubTitle,
                 duration = "8",
-                list = previewPrayerList,
+                list = uiState.prayerList,
                 modifier = Modifier.padding(bottom = LocalSpacing.current.space20)
             )
         }
 
         otherPrayerSection(
-            list = previewOtherPrayerList,
+            list = uiState.otherPrayerList,
             onClick = {}
         )
     }
@@ -190,6 +195,6 @@ private fun AddWorshipPlanCardPreview() {
 @Composable
 private fun HomeContentPreview() {
     PysPreview {
-        HomeContent(onClick = {})
+        HomeContent(uiState = HomeUiState(prayerList = previewOtherPrayerList), onClick = {})
     }
 }
