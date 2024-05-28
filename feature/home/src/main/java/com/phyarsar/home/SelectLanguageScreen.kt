@@ -28,7 +28,7 @@ import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.localization.Vocabulary
 import com.phyarsar.home.PreviewData.languageList
-import com.phyarsar.home.model.LanguageModel
+import com.phayarsar.domain.model.LanguageModel
 
 @Composable
 fun SelectLanguageScreen() {
