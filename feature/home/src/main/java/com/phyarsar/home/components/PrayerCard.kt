@@ -29,8 +29,10 @@ import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.design_system.utils.bounceClick
+import com.phayarsar.domain.model.PrayerModel
 import com.phayarsar.localization.Vocabulary
 import com.phayarsar.localization.model.LocalizationModel
+import com.phyarsar.home.PreviewData
 import com.phyarsar.home.R
 
 @Composable
@@ -39,7 +41,7 @@ fun PrayerCard(
     title: String,
     subtitle: String,
     duration: String,
-    list: List<String>,
+    list: List<PrayerModel>,
     color: Color = MaterialTheme.colorScheme.primary,
     localization: LocalizationModel = Vocabulary.localization
 ) {
@@ -110,7 +112,7 @@ fun PrayerCard(
 private fun PrayerCollectionSection(
     onClick: () -> Unit,
     localization: LocalizationModel = Vocabulary.localization,
-    list: List<String>
+    list: List<PrayerModel>
 ) {
     if (list.size <= 3) return
     PysCard(
@@ -146,7 +148,7 @@ private fun PrayerCollectionSection(
 }
 
 @Composable
-private fun PrayerListSection(list: List<String>) {
+private fun PrayerListSection(list: List<PrayerModel>) {
     PysCard(
         color = Color.Black.copy(alpha = 0.4f),
         modifier = Modifier.fillMaxWidth()
@@ -157,7 +159,7 @@ private fun PrayerListSection(list: List<String>) {
         ) {
             items(list) {
                 PrayerItem(
-                    label = it,
+                    label = it.label,
                     showDivider = it != list.last(),
                     onClick = {}
                 )
@@ -217,14 +219,7 @@ private fun PrayerCardPreview() {
             title = "ဘုရားရှိခိုး ဂါထာများ",
             subtitle = "ဘုရားကန်တော့",
             duration = "8",
-            list = listOf(
-                "သြကာသ ကန်တော့ချိုး",
-                "စိန်ရောင်ခြည် ဘုရားပင့်",
-                "နတ်ပင့်",
-                "သြကာသ ကန်တော့ချိုး",
-                "စိန်ရောင်ခြည် ဘုရားပင့်",
-                "နတ်ပင့်"
-            ),
+            list = PreviewData.previewPrayerList,
             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
         )
     }
