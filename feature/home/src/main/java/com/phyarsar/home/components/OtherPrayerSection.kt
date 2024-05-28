@@ -25,9 +25,10 @@ import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.design_system.utils.bounceClick
+import com.phayarsar.domain.model.PrayerModel
 import com.phayarsar.localization.Vocabulary.localization
+import com.phyarsar.home.PreviewData
 import com.phyarsar.home.R
-import com.phyarsar.home.model.PrayerModel
 
 fun LazyListScope.otherPrayerSection(
     list: List<PrayerModel>,
@@ -117,19 +118,7 @@ fun OtherPrayerSectionPreview() {
                 modifier = Modifier.padding(LocalSpacing.current.space16)
             ) {
                 otherPrayerSection(
-
-                    list = listOf(
-                        PrayerModel("1", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး"),
-                        PrayerModel("2", "ရှင်သီဝလိ ဂါထာတော်"),
-                        PrayerModel("3", "ဓမ္မစကြာ တရားတော်"),
-                        PrayerModel("4", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး"),
-                        PrayerModel("5", "ရှင်သီဝလိ ဂါထာတော်"),
-                        PrayerModel("6", "ဓမ္မစကြာ တရားတော်"),
-                        PrayerModel("7", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး"),
-                        PrayerModel("8", "ရှင်သီဝလိ ဂါထာတော်"),
-                        PrayerModel("9", "ဓမ္မစကြာ တရားတော်"),
-                        PrayerModel("10", "သမ္ဗုဒ္ဓေ ဂါထာတော်ကြီး")
-                    ),
+                    list = PreviewData.previewOtherPrayerList,
                     onClick = {}
                 )
             }
