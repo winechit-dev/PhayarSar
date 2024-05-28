@@ -1,7 +1,7 @@
 package com.phyarsar.home
 
-import com.phyarsar.home.model.LanguageModel
-import com.phyarsar.home.model.PrayerModel
+import com.phayarsar.domain.model.LanguageModel
+import com.phayarsar.domain.model.PrayerModel
 
 object PreviewData {
 
@@ -21,12 +21,12 @@ object PreviewData {
     )
 
     val previewPrayerList = listOf(
-        "သြကာသ ကန်တော့ချိုး",
-        "စိန်ရောင်ခြည် ဘုရားပင့်",
-        "နတ်ပင့်",
-        "သြကာသ ကန်တော့ချိုး",
-        "စိန်ရောင်ခြည် ဘုရားပင့်",
-        "နတ်ပင့်"
+        PrayerModel("1", "သြကာသ ကန်တော့ချိုး"),
+        PrayerModel("2", "စိန်ရောင်ခြည် ဘုရားပင့်"),
+        PrayerModel("3", "နတ်ပင့်"),
+        PrayerModel("4", "သြကာသ ကန်တော့ချိုး"),
+        PrayerModel("5", "စိန်ရောင်ခြည် ဘုရားပင့်"),
+        PrayerModel("6", "နတ်ပင့်"),
     )
 
     val previewOtherPrayerList = listOf(

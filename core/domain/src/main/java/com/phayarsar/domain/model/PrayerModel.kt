@@ -1,4 +1,4 @@
-package com.phyarsar.home.model
+package com.phayarsar.domain.model
 
 data class PrayerModel(
     val id: String,
