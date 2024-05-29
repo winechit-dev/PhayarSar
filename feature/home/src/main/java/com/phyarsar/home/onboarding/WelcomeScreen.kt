@@ -22,10 +22,11 @@ import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.localization.Vocabulary
+import com.phyarsar.home.HomeEvent
 import com.phyarsar.home.R
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(onClick: (HomeEvent) -> Unit) {
     val localization = Vocabulary.localization
     Column(
         modifier = Modifier
@@ -63,7 +64,8 @@ fun WelcomeScreen() {
         PysButton(
             text = localization.btn_get_started,
             modifier = Modifier.fillMaxWidth(),
-            onClick = { })
+            onClick = { onClick(HomeEvent.OnNext) }
+        )
     }
 }
 
@@ -71,6 +73,6 @@ fun WelcomeScreen() {
 @Composable
 private fun WelcomeScreenPreview() {
     PysPreview {
-        WelcomeScreen()
+        WelcomeScreen {}
     }
 }

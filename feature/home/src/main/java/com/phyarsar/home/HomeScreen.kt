@@ -38,7 +38,7 @@ import com.phyarsar.home.components.PrayerCard
 import com.phyarsar.home.components.otherPrayerSection
 
 @Composable
-fun HomeScreen(onClick: () -> Unit) {
+fun HomeScreen(onClick: (HomeEvent) -> Unit) {
 
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -49,7 +49,7 @@ fun HomeScreen(onClick: () -> Unit) {
 @Composable
 fun HomeContent(
     uiState: HomeUiState,
-    onClick: () -> Unit,
+    onClick: (HomeEvent) -> Unit,
     localization: LocalizationModel = Vocabulary.localization
 ) {
 
@@ -81,7 +81,9 @@ fun HomeContent(
 
         otherPrayerSection(
             list = uiState.otherPrayerList,
-            onClick = {}
+            onClick = {
+                onClick(HomeEvent.GoToDetails(it))
+            }
         )
     }
 }
@@ -89,7 +91,7 @@ fun HomeContent(
 @Composable
 fun HeaderSection(
     localization: LocalizationModel = Vocabulary.localization,
-    onClick: () -> Unit = {}
+    onClick: (HomeEvent) -> Unit = {}
 ) {
 
     Column {
@@ -110,7 +112,9 @@ fun HeaderSection(
                     .size(40.dp)
                     .clip(CircleShape)
                     .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.5f))
-                    .clickable { onClick() }
+                    .clickable {
+                        onClick(HomeEvent.OnSearch)
+                    }
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_search),

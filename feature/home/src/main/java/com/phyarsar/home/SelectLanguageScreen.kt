@@ -26,12 +26,12 @@ import com.phayarsar.design_system.components.PysTopAppBar
 import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
+import com.phayarsar.domain.model.LanguageModel
 import com.phayarsar.localization.Vocabulary
 import com.phyarsar.home.PreviewData.languageList
-import com.phayarsar.domain.model.LanguageModel
 
 @Composable
-fun SelectLanguageScreen() {
+fun SelectLanguageScreen(onClick: (HomeEvent) -> Unit) {
 
     val localization = Vocabulary.localization
     Scaffold(
@@ -41,7 +41,7 @@ fun SelectLanguageScreen() {
                 colors = MaterialTheme.colorScheme.surfaceContainerLowest,
                 actions = {
                     PysTextButton(
-                        onClick = { },
+                        onClick = { onClick(HomeEvent.OnNext) },
                         text = localization.next
                     )
                 }
@@ -151,6 +151,6 @@ private fun SelectLanguageItemPreview() {
 @Composable
 private fun SelectLanguageScreenPreview() {
     PysPreview {
-        SelectLanguageScreen()
+        SelectLanguageScreen({})
     }
 }
