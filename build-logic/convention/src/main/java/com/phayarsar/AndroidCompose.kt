@@ -1,7 +1,6 @@
 package com.phayarsar
 
 import com.android.build.api.dsl.CommonExtension
-import com.wcp.convention.libs
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
