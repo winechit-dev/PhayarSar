@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.phayarsar.domain.PrayerRepository
 import com.phayarsar.domain.model.PrayerModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
+@HiltViewModel
 class HomeViewModel @Inject constructor(
     prayerRepository: PrayerRepository
 ) : ViewModel() {
