@@ -14,7 +14,5 @@ abstract class DataSourceModule {
 
     @Binds
     @Singleton
-    abstract fun bindRemoteDatasource(
-        remoteDatasourceImpl: LocalDataSourceImpl
-    ): LocalDataSource
+    abstract fun bindLocalDataSource(localDataSourceImpl: LocalDataSourceImpl): LocalDataSource
 }
