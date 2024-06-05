@@ -1,17 +1,11 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.phayarsar.android.library)
+    alias(libs.plugins.phayarsar.android.hilt)
     id("kotlinx-serialization")
 }
 
 android {
     namespace = "com.phayarsar.data"
-    compileSdk = 34
-
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
 }
 
 dependencies {
@@ -25,8 +19,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.hilt.android)
-    implementation(libs.hilt.compiler)
     implementation(libs.kotlinx.serialization.json)
 
 }
