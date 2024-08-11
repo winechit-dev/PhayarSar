@@ -1,7 +1,6 @@
 package com.phayarsar.data.mapper
 
 import com.phayarsar.data.responsemodel.LanguageResponse
-import com.phayarsar.data.responsemodel.LocalizationResponseModel
 import com.phayarsar.localization.model.LocalizationModel
 import java.util.Locale
 
