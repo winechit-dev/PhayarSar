@@ -37,9 +37,13 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
+            // collect screen state
+
             PysTheme {
                 Localization(localization) {
-                    NavigationController()
+                    NavigationController(
+                        screenState = ScreenState.Welcome // pass screen state
+                    )
                 }
             }
         }

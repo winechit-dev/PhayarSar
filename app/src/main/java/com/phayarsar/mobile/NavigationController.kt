@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,9 +16,17 @@ import com.phyarsar.home.SelectLanguageScreen
 import com.phyarsar.home.onboarding.WelcomeScreen
 
 @Composable
-fun NavigationController() {
+fun NavigationController(
+    screenState: ScreenState
+) {
 
     val navController = rememberNavController()
+    val startRoute = remember(screenState) {
+        when (screenState) {
+            ScreenState.Home -> ScreenRoute.HomeScreen.route
+            ScreenState.Welcome -> ScreenRoute.WelcomeScreen.route
+        }
+    }
 
     Scaffold(
         modifier = Modifier.fillMaxSize()
@@ -25,7 +34,7 @@ fun NavigationController() {
 
         NavHost(
             navController = navController,
-            startDestination = ScreenRoute.SelectLanguage.route,
+            startDestination = startRoute,
             modifier = Modifier.padding(it)
         ) {
 
@@ -50,7 +59,7 @@ fun NavigationController() {
                     onClick = { homeEvent ->
                         when (homeEvent) {
                             is HomeEvent.OnNext -> {
-                                navController.navigate("home")
+                                // navController.navigate("home")
                             }
 
                             is HomeEvent.OnBack -> {

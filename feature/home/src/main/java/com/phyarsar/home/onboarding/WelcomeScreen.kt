@@ -28,6 +28,7 @@ import com.phyarsar.home.R
 @Composable
 fun WelcomeScreen(onClick: (HomeEvent) -> Unit) {
     val localization = Vocabulary.localization
+    // Create View Model
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -64,7 +65,10 @@ fun WelcomeScreen(onClick: (HomeEvent) -> Unit) {
         PysButton(
             text = localization.btn_get_started,
             modifier = Modifier.fillMaxWidth(),
-            onClick = { onClick(HomeEvent.OnNext) }
+            onClick = {
+                // save get started status via viemodel.getStarted()
+                // remove onClick(HomeEvent.OnNext)
+            }
         )
     }
 }
