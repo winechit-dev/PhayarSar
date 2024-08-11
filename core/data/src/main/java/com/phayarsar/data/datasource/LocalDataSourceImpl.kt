@@ -1,6 +1,7 @@
 package com.phayarsar.data.datasource
 
 import android.content.Context
+import com.phayarsar.data.responsemodel.LocalizationResponseModel
 import com.phayarsar.data.responsemodel.PrayerResponseModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
@@ -39,6 +40,22 @@ class LocalDataSourceImpl @Inject constructor(
 
             try {
                 bufferedReader = context.assets.open("otherPrayer.json").bufferedReader()
+
+                jsonString = bufferedReader.use { it.readText() }
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            emit(Json.decodeFromString(jsonString))
+        }
+
+    override val localization: Flow<LocalizationResponseModel>
+        get() = flow {
+            lateinit var jsonString: String
+            lateinit var bufferedReader: BufferedReader
+
+            try {
+                bufferedReader = context.assets.open("language.json").bufferedReader()
 
                 jsonString = bufferedReader.use { it.readText() }
 

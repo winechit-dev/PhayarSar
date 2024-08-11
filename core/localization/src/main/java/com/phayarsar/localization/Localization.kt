@@ -5,7 +5,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.compositionLocalOf
 import com.phayarsar.localization.model.LocalizationModel
-import java.util.Locale
 
 val LocalLocalization = compositionLocalOf { LocalizationModel() }
 

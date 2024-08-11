@@ -1,15 +1,17 @@
 package com.phayarsar.data.repository
 
+import android.content.Context
 import com.phayarsar.data.datasource.LocalDataSource
 import com.phayarsar.data.mapper.toPrayerModelList
 import com.phayarsar.domain.PrayerRepository
 import com.phayarsar.domain.model.PrayerModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class PrayerRepositoryImpl @Inject constructor(
-    private val localDataSource: LocalDataSource
+    private val localDataSource: LocalDataSource, @ApplicationContext private val context: Context
 ) : PrayerRepository {
 
     override val getPrayerList: Flow<List<PrayerModel>>
