@@ -28,6 +28,7 @@ import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.domain.model.LanguageModel
 import com.phayarsar.localization.Vocabulary
+import com.phayarsar.localization.model.ENGLISH
 import com.phyarsar.home.PreviewData.languageList
 
 @Composable
@@ -141,7 +142,8 @@ private fun SelectLanguageItemPreview() {
                 languageName = "English",
                 languageNotation = "(English)",
                 image = R.drawable.ic_uk_flag,
-                isChecked = true
+                isChecked = true,
+                locale = ENGLISH
             )
         )
     }

@@ -2,6 +2,8 @@ package com.phyarsar.home
 
 import com.phayarsar.domain.model.LanguageModel
 import com.phayarsar.domain.model.PrayerModel
+import com.phayarsar.localization.model.ENGLISH
+import com.phayarsar.localization.model.MYANMAR
 
 object PreviewData {
 
@@ -10,13 +12,15 @@ object PreviewData {
             languageName = "English",
             languageNotation = "(English)",
             image = R.drawable.ic_uk_flag,
-            isChecked = false
+            isChecked = false,
+            locale = ENGLISH
         ),
         LanguageModel(
             languageName = "Myanmar",
             languageNotation = "(မြန်မာစာ)",
             image = R.drawable.ic_myanmar_flag,
-            isChecked = true
+            isChecked = true,
+            locale = MYANMAR
         )
     )
 

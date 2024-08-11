@@ -1,308 +1,179 @@
 package com.phayarsar.data.mapper
 
+import com.phayarsar.data.responsemodel.LanguageResponse
 import com.phayarsar.data.responsemodel.LocalizationResponseModel
 import com.phayarsar.localization.model.LocalizationModel
-
-fun LocalizationResponseModel.toLocalizationModel(): LocalizationModel {
-    return LocalizationModel().also {
-        phayarsar = it.phayarsar
-
-        welcome_to_phayarsar = it.welcome_to_phayarsar
-
-        onboarding_desc = it.onboarding_desc
-
-        btn_get_started = it.btn_get_started
-
-        choose_a_language = it.choose_a_language
-
-        next = it.next
-
-        finished = it.finished
-
-        today_pray_time_x = it.today_pray_time_x
-
-        today_pray_time = it.today_pray_time
-
-        x_min = it.x_min
-
-        x_sec = it.x_sec
-
-        x_hour_y_min = it.x_hour_y_min
-
-        btn_add = it.btn_add
-
-        btn_pray = it.btn_pray
-
-        home = it.home
-
-        settings = it.settings
-
-        app_language = it.app_language
-
-        app_accent_color = it.app_accent_color
-
-        choose_accent_color = it.choose_accent_color
-
-        haptic_on = it.haptic_on
-
-        themes_and_settings = it.themes_and_settings
-
-        about_x = it.about_x
-
-        jasmine = it.jasmine
-
-        panglong = it.panglong
-
-        msquare = it.msquare
-
-        yoeyar = it.yoeyar
-
-        page_white = it.page_white
-
-        page_yellow = it.page_yellow
-
-        page_grey = it.page_grey
-
-        page_black = it.page_black
-
-        font = it.font
-
-        background_and_color = it.background_and_color
-
-        letter_and_line_spacing = it.letter_and_line_spacing
-
-        letter_spacing = it.letter_spacing
-
-        line_spacing = it.line_spacing
-
-        paragraph_spacing = it.paragraph_spacing
-
-        text_size_and_alignment = it.text_size_and_alignment
-
-        align_left = it.align_left
-
-        align_right = it.align_right
-        align_center = it.align_center
-
-        justify = it.justify
-
-        show_pronunciation = it.show_pronunciation
-
-        scrolling_speed = it.scrolling_speed
-
-        spotlight_text = it.spotlight_text
-        tap_to_scroll = it.tap_to_scroll
-
-        x0_5 = it.x0_5
-
-        x0_75 = it.x0_75
-
-        x1 = it.x1
-
-        x1_25 = it.x1_25
-        x1_5 = it.x1_5
-
-        x2 = it.x2
-
-        mode = it.mode
-
-        reader_mode = it.reader_mode
-
-        player_mode = it.player_mode
-        selected = it.selected
-
-        add_new = it.add_new
-
-        worship_plan_helps_you_pray = it.worship_plan_helps_you_pray
-
-        view_collection = it.view_collection
-
-        plus_x_more = it.plus_x_more
-
-        other_prayers = it.other_prayers
-
-        new_plan = it.new_plan
-
-        name_your_worship_plan = it.name_your_worship_plan
-
-        plan_name = it.plan_name
-
-        add_new_prayer = it.add_new_prayer
-
-        btn_close = it.btn_close
-
-        btn_save = it.btn_save
-
-        select_prayers = it.select_prayers
-
-        everyday = it.everyday
-
-        sun = it.sun
-
-        mon = it.mon
-
-        tue = it.tue
-
-        wed = it.wed
-
-        thu = it.thu
-
-        fri = it.fri
-        sat = it.sat
-
-        selectDay = it.selectDay
-
-        selectTime = it.selectTime
-
-        selectTagColor = it.selectTagColor
-
-        setReminder = it.setReminder
-
-        do_you_have_praying_time = it.do_you_have_praying_time
-
-        yes_i_do = it.yes_i_do
-
-        no_i_dont = it.no_i_dont
-
-        time = it.time
-
-        remind = it.remind
-
-        before = it.before
-
-        x_min_s = it.x_min_s
-
-        su = it.su
-
-        mo = it.mo
-
-        tu = it.tu
-
-        we = it.we
-
-        th = it.th
-
-        fr = it.fr
-
-        sa = it.sa
-
-        worship_plan = it.worship_plan
-        view_more = it.view_more
-
-        notify_x_mins_before = it.notify_x_mins_before
-
-        x_prayers = it.x_prayers
-
-        not_specified = it.not_specified
-
-        new_worship_plan = it.new_worship_plan
-        all_worship_plans = it.all_worship_plans
-
-        edit_plan = it.edit_plan
-
-        plan_detail = it.plan_detail
-
-        prayers_x = it.prayers_x
-
-        selected_days = it.selected_days
-        remind_me_before = it.remind_me_before
-
-        edit = it.edit
-
-        delete = it.delete
-
-        plan_deleted_successfully = it.plan_deleted_successfully
-
-        x_of_y = it.x_of_y
-
-        reset_prayers_theme = it.reset_prayers_theme
-
-        reset_prayers_theme_desc = it.reset_prayers_theme_desc
-
-        prayers_theme_data_reset_successfully = it.prayers_theme_data_reset_successfully
-
-        delete_confirmation = it.delete_confirmation
-
-        cancel = it.cancel
-
-        disable_worship_reminders = it.disable_worship_reminders
-
-        disable_worship_reminders_desc = it.disable_worship_reminders_desc
-
-        enable_worship_reminders = it.enable_worship_reminders
-
-        enable_worship_reminders_desc = it.enable_worship_reminders_desc
-
-        disable_worship_reminders_success = it.disable_worship_reminders_success
-
-        disabled = it.disabled
-
-        seconds = it.seconds
-
-        minutes = it.minutes
-
-        hours = it.hours
-
-        second = it.second
-
-        minute = it.minute
-
-        hour = it.hour
-
-        within_this_week = it.within_this_week
-
-        weekly = it.weekly
-
-        monthly = it.monthly
-
-        yearly = it.yearly
-
-        within_this_month = it.within_this_month
-
-        jan = it.jan
-
-        feb = it.feb
-
-        mar = it.mar
-
-        apr = it.apr
-
-        may = it.may
-
-        jun = it.jun
-
-        jul = it.jul
-
-        aug = it.aug
-
-        sep = it.sep
-
-        oct = it.oct
-
-        nov = it.nov
-
-        dec = it.dec
-
-        within_this_year = it.within_this_year
-
-        search = it.search
-
-        search_placeholder = it.search_placeholder
-
-        x_found = it.x_found
-
-        prayers = it.prayers
-
-        plans = it.plans
-
-        rate_app = it.rate_app
-
-        tell_friends = it.tell_friends
-
-        send_feedback = it.send_feedback
-
-        licenses = it.licenses
-
-        websites_referenced_for_prayers = it.websites_referenced_for_prayers
+import java.util.Locale
+
+fun Map<String, LanguageResponse>.toLocalizationModel(locale: Locale): LocalizationModel {
+    return LocalizationModel().also { model ->
+        model.phayarsar = this["phayarsar"].toLanguage(locale)
+        model.welcome_to_phayarsar = this["welcome_to_phayarsar"].toLanguage(locale)
+        model.onboarding_desc = this["onboarding_desc"].toLanguage(locale)
+        model.btn_get_started = this["btn_get_started"].toLanguage(locale)
+        model.choose_a_language = this["choose_a_language"].toLanguage(locale)
+        model.next = this["next"].toLanguage(locale)
+        model.finished = this["finished"].toLanguage(locale)
+        model.today_pray_time_x = this["today_pray_time_x"].toLanguage(locale)
+        model.today_pray_time = this["today_pray_time"].toLanguage(locale)
+        model.x_min = this["x_min"].toLanguage(locale)
+        model.x_sec = this["x_sec"].toLanguage(locale)
+        model.x_hour_y_min = this["x_hour_y_min"].toLanguage(locale)
+        model.btn_add = this["btn_add"].toLanguage(locale)
+        model.btn_pray = this["btn_pray"].toLanguage(locale)
+        model.home = this["home"].toLanguage(locale)
+        model.settings = this["settings"].toLanguage(locale)
+        model.app_language = this["app_language"].toLanguage(locale)
+        model.app_accent_color = this["app_accent_color"].toLanguage(locale)
+        model.choose_accent_color = this["choose_accent_color"].toLanguage(locale)
+        model.haptic_on = this["haptic_on"].toLanguage(locale)
+        model.themes_and_settings = this["themes_and_settings"].toLanguage(locale)
+        model.about_x = this["about_x"].toLanguage(locale)
+        model.jasmine = this["jasmine"].toLanguage(locale)
+        model.panglong = this["panglong"].toLanguage(locale)
+        model.msquare = this["msquare"].toLanguage(locale)
+        model.yoeyar = this["yoeyar"].toLanguage(locale)
+        model.page_white = this["page_white"].toLanguage(locale)
+        model.page_yellow = this["page_yellow"].toLanguage(locale)
+        model.page_grey = this["page_grey"].toLanguage(locale)
+        model.page_black = this["page_black"].toLanguage(locale)
+        model.font = this["font"].toLanguage(locale)
+        model.background_and_color = this["background_and_color"].toLanguage(locale)
+        model.letter_and_line_spacing = this["letter_and_line_spacing"].toLanguage(locale)
+        model.letter_spacing = this["letter_spacing"].toLanguage(locale)
+        model.line_spacing = this["line_spacing"].toLanguage(locale)
+        model.paragraph_spacing = this["paragraph_spacing"].toLanguage(locale)
+        model.text_size_and_alignment = this["text_size_and_alignment"].toLanguage(locale)
+        model.align_left = this["align_left"].toLanguage(locale)
+        model.align_right = this["align_right"].toLanguage(locale)
+        model.align_center = this["align_center"].toLanguage(locale)
+        model.justify = this["justify"].toLanguage(locale)
+        model.show_pronunciation = this["show_pronunciation"].toLanguage(locale)
+        model.scrolling_speed = this["scrolling_speed"].toLanguage(locale)
+        model.spotlight_text = this["spotlight_text"].toLanguage(locale)
+        model.tap_to_scroll = this["tap_to_scroll"].toLanguage(locale)
+        model.x0_5 = this["x0_5"].toLanguage(locale)
+        model.x0_75 = this["x0_75"].toLanguage(locale)
+        model.x1 = this["x1"].toLanguage(locale)
+        model.x1_25 = this["x1_25"].toLanguage(locale)
+        model.x1_5 = this["x1_5"].toLanguage(locale)
+        model.x2 = this["x2"].toLanguage(locale)
+        model.mode = this["mode"].toLanguage(locale)
+        model.reader_mode = this["reader_mode"].toLanguage(locale)
+        model.player_mode = this["player_mode"].toLanguage(locale)
+        model.selected = this["selected"].toLanguage(locale)
+        model.add_new = this["add_new"].toLanguage(locale)
+        model.worship_plan_helps_you_pray = this["worship_plan_helps_you_pray"].toLanguage(locale)
+        model.view_collection = this["view_collection"].toLanguage(locale)
+        model.plus_x_more = this["plus_x_more"].toLanguage(locale)
+        model.other_prayers = this["other_prayers"].toLanguage(locale)
+        model.new_plan = this["new_plan"].toLanguage(locale)
+        model.name_your_worship_plan = this["name_your_worship_plan"].toLanguage(locale)
+        model.plan_name = this["plan_name"].toLanguage(locale)
+        model.add_new_prayer = this["add_new_prayer"].toLanguage(locale)
+        model.btn_close = this["btn_close"].toLanguage(locale)
+        model.btn_save = this["btn_save"].toLanguage(locale)
+        model.select_prayers = this["select_prayers"].toLanguage(locale)
+        model.everyday = this["everyday"].toLanguage(locale)
+        model.sun = this["sun"].toLanguage(locale)
+        model.mon = this["mon"].toLanguage(locale)
+        model.tue = this["tue"].toLanguage(locale)
+        model.wed = this["wed"].toLanguage(locale)
+        model.thu = this["thu"].toLanguage(locale)
+        model.fri = this["fri"].toLanguage(locale)
+        model.sat = this["sat"].toLanguage(locale)
+        model.selectDay = this["selectDay"].toLanguage(locale)
+        model.selectTime = this["selectTime"].toLanguage(locale)
+        model.selectTagColor = this["selectTagColor"].toLanguage(locale)
+        model.setReminder = this["setReminder"].toLanguage(locale)
+        model.do_you_have_praying_time = this["do_you_have_praying_time"].toLanguage(locale)
+        model.yes_i_do = this["yes_i_do"].toLanguage(locale)
+        model.no_i_dont = this["no_i_dont"].toLanguage(locale)
+        model.time = this["time"].toLanguage(locale)
+        model.remind = this["remind"].toLanguage(locale)
+        model.before = this["before"].toLanguage(locale)
+        model.x_min_s = this["x_min_s"].toLanguage(locale)
+        model.su = this["su"].toLanguage(locale)
+        model.mo = this["mo"].toLanguage(locale)
+        model.tu = this["tu"].toLanguage(locale)
+        model.we = this["we"].toLanguage(locale)
+        model.th = this["th"].toLanguage(locale)
+        model.fr = this["fr"].toLanguage(locale)
+        model.sa = this["sa"].toLanguage(locale)
+        model.worship_plan = this["worship_plan"].toLanguage(locale)
+        model.view_more = this["view_more"].toLanguage(locale)
+        model.notify_x_mins_before = this["notify_x_mins_before"].toLanguage(locale)
+        model.x_prayers = this["x_prayers"].toLanguage(locale)
+        model.not_specified = this["not_specified"].toLanguage(locale)
+        model.new_worship_plan = this["new_worship_plan"].toLanguage(locale)
+        model.all_worship_plans = this["all_worship_plans"].toLanguage(locale)
+        model.edit_plan = this["edit_plan"].toLanguage(locale)
+        model.plan_detail = this["plan_detail"].toLanguage(locale)
+        model.prayers_x = this["prayers_x"].toLanguage(locale)
+        model.selected_days = this["selected_days"].toLanguage(locale)
+        model.remind_me_before = this["remind_me_before"].toLanguage(locale)
+        model.edit = this["edit"].toLanguage(locale)
+        model.delete = this["delete"].toLanguage(locale)
+        model.plan_deleted_successfully = this["plan_deleted_successfully"].toLanguage(locale)
+        model.x_of_y = this["x_of_y"].toLanguage(locale)
+        model.reset_prayers_theme = this["reset_prayers_theme"].toLanguage(locale)
+        model.reset_prayers_theme_desc = this["reset_prayers_theme_desc"].toLanguage(locale)
+        model.prayers_theme_data_reset_successfully =
+            this["prayers_theme_data_reset_successfully"].toLanguage(locale)
+        model.delete_confirmation = this["delete_confirmation"].toLanguage(locale)
+        model.cancel = this["cancel"].toLanguage(locale)
+        model.disable_worship_reminders = this["disable_worship_reminders"].toLanguage(locale)
+        model.disable_worship_reminders_desc =
+            this["disable_worship_reminders_desc"].toLanguage(locale)
+        model.enable_worship_reminders = this["enable_worship_reminders"].toLanguage(locale)
+        model.enable_worship_reminders_desc =
+            this["enable_worship_reminders_desc"].toLanguage(locale)
+        model.disable_worship_reminders_success =
+            this["disable_worship_reminders_success"].toLanguage(locale)
+        model.disabled = this["disabled"].toLanguage(locale)
+        model.seconds = this["seconds"].toLanguage(locale)
+        model.minutes = this["minutes"].toLanguage(locale)
+        model.hours = this["hours"].toLanguage(locale)
+        model.second = this["second"].toLanguage(locale)
+        model.minute = this["minute"].toLanguage(locale)
+        model.hour = this["hour"].toLanguage(locale)
+        model.within_this_week = this["within_this_week"].toLanguage(locale)
+        model.weekly = this["weekly"].toLanguage(locale)
+        model.monthly = this["monthly"].toLanguage(locale)
+        model.yearly = this["yearly"].toLanguage(locale)
+        model.within_this_month = this["within_this_month"].toLanguage(locale)
+        model.jan = this["jan"].toLanguage(locale)
+        model.feb = this["feb"].toLanguage(locale)
+        model.mar = this["mar"].toLanguage(locale)
+        model.apr = this["apr"].toLanguage(locale)
+        model.may = this["may"].toLanguage(locale)
+        model.jun = this["jun"].toLanguage(locale)
+        model.jul = this["jul"].toLanguage(locale)
+        model.aug = this["aug"].toLanguage(locale)
+        model.sep = this["sep"].toLanguage(locale)
+        model.oct = this["oct"].toLanguage(locale)
+        model.nov = this["nov"].toLanguage(locale)
+        model.dec = this["dec"].toLanguage(locale)
+        model.within_this_year = this["within_this_year"].toLanguage(locale)
+        model.search = this["search"].toLanguage(locale)
+        model.search_placeholder = this["search_placeholder"].toLanguage(locale)
+        model.x_found = this["x_found"].toLanguage(locale)
+        model.prayers = this["prayers"].toLanguage(locale)
+        model.plans = this["plans"].toLanguage(locale)
+        model.rate_app = this["rate_app"].toLanguage(locale)
+        model.tell_friends = this["tell_friends"].toLanguage(locale)
+        model.send_feedback = this["send_feedback"].toLanguage(locale)
+        model.licenses = this["licenses"].toLanguage(locale)
+        model.websites_referenced_for_prayers =
+            this["websites_referenced_for_prayers"].toLanguage(locale)
     }
+}
+
+fun LanguageResponse?.toLanguage(locale: Locale): String {
+    return if (this != null) {
+        when (locale) {
+            Locale("en") -> this.en
+            else -> this.mm
+        }
+    } else ""
 }
