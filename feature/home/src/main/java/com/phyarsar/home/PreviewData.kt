@@ -9,17 +9,19 @@ object PreviewData {
 
     val languageList = listOf(
         LanguageModel(
-            languageName = "English",
-            languageNotation = "(English)",
+            language = ENGLISH.language,
+            title = "English",
+            body = "(English)",
             image = R.drawable.ic_uk_flag,
-            isChecked = false,
+            isSelected = false,
             locale = ENGLISH
         ),
         LanguageModel(
-            languageName = "Myanmar",
-            languageNotation = "(မြန်မာစာ)",
+            language = MYANMAR.language,
+            title = "Myanmar",
+            body = "(မြန်မာစာ)",
             image = R.drawable.ic_myanmar_flag,
-            isChecked = true,
+            isSelected = true,
             locale = MYANMAR
         )
     )

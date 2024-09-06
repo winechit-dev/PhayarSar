@@ -1,7 +1,9 @@
-package com.phyarsar.home
+package com.phyarsar.home.selectedLanguage
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,12 +16,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.components.PysTextButton
 import com.phayarsar.design_system.components.PysTopAppBar
@@ -29,10 +34,13 @@ import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.domain.model.LanguageModel
 import com.phayarsar.localization.Vocabulary
 import com.phayarsar.localization.model.ENGLISH
-import com.phyarsar.home.PreviewData.languageList
+import com.phyarsar.home.R
 
 @Composable
-fun SelectLanguageScreen(onClick: (HomeEvent) -> Unit) {
+fun SelectLanguageScreen(onClickNext: () -> Unit) {
+
+    val viewModel: SelectedLanguageViewModel = hiltViewModel()
+    val uiState by viewModel.uiState.collectAsState()
 
     val localization = Vocabulary.localization
     Scaffold(
@@ -42,29 +50,53 @@ fun SelectLanguageScreen(onClick: (HomeEvent) -> Unit) {
                 colors = MaterialTheme.colorScheme.surfaceContainerLowest,
                 actions = {
                     PysTextButton(
-                        onClick = { onClick(HomeEvent.OnNext) },
+                        onClick = {
+                            viewModel.changeLocale()
+                            onClickNext()
+                        },
                         text = localization.next
                     )
                 }
             )
         }
     ) {
-        Column(
+
+        SelectedLanguageContent(
+            languageList = uiState,
+            contentPadding = it,
+            onSelected = { languageModel ->
+                viewModel.selectLanguage(languageModel.language)
+            }
+        )
+    }
+}
+
+@Composable
+fun SelectedLanguageContent(
+    languageList: List<LanguageModel>,
+    contentPadding: PaddingValues,
+    onSelected: (LanguageModel) -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(contentPadding)
+    ) {
+        PysCard(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(it)
+                .fillMaxWidth()
+                .padding(horizontal = LocalSpacing.current.space20)
+                .padding(top = LocalSpacing.current.space30),
+            color = MaterialTheme.colorScheme.surfaceContainerLowest
         ) {
-            PysCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = LocalSpacing.current.space20)
-                    .padding(top = LocalSpacing.current.space30),
-                color = MaterialTheme.colorScheme.surfaceContainerLowest
-            ) {
-                LazyColumn(modifier = Modifier) {
-                    items(languageList) { languageItem ->
-                        SelectLanguageItem(languageItem)
-                    }
+            LazyColumn(modifier = Modifier) {
+                items(languageList) { languageItem ->
+                    SelectLanguageItem(
+                        languageItem = languageItem,
+                        onSelected = {
+                            onSelected(it)
+                        }
+                    )
                 }
             }
         }
@@ -72,12 +104,15 @@ fun SelectLanguageScreen(onClick: (HomeEvent) -> Unit) {
 }
 
 @Composable
-fun SelectLanguageItem(languageItem: LanguageModel) {
+fun SelectLanguageItem(languageItem: LanguageModel, onSelected: (LanguageModel) -> Unit) {
 
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(LocalSpacing.current.space20),
+            .padding(LocalSpacing.current.space20)
+            .clickable {
+                onSelected(languageItem)
+            }
     ) {
         val (imgFlag, englishName, myanmarName, imgCheck) = createRefs()
 
@@ -95,7 +130,7 @@ fun SelectLanguageItem(languageItem: LanguageModel) {
         )
 
         Text(
-            text = languageItem.languageName,
+            text = languageItem.title,
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
                 .constrainAs(englishName) {
@@ -105,7 +140,7 @@ fun SelectLanguageItem(languageItem: LanguageModel) {
         )
 
         Text(
-            text = languageItem.languageNotation,
+            text = languageItem.body,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
                 .constrainAs(myanmarName) {
@@ -115,7 +150,7 @@ fun SelectLanguageItem(languageItem: LanguageModel) {
                 }
         )
 
-        if (languageItem.isChecked) {
+        if (languageItem.isSelected) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_check_circle),
                 contentDescription = null,
@@ -139,20 +174,22 @@ private fun SelectLanguageItemPreview() {
     PysPreview {
         SelectLanguageItem(
             LanguageModel(
-                languageName = "English",
-                languageNotation = "(English)",
+                language = "english",
+                title = "English",
+                body = "(English)",
                 image = R.drawable.ic_uk_flag,
-                isChecked = true,
+                isSelected = true,
                 locale = ENGLISH
             )
-        )
+        ) {}
     }
 }
 
+
 @ThemePreviews
 @Composable
-private fun SelectLanguageScreenPreview() {
+private fun SelectLanguageContentPreview() {
     PysPreview {
-        SelectLanguageScreen({})
+        SelectedLanguageContent(languageList,PaddingValues(8.dp)) {}
     }
 }

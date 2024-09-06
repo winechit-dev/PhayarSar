@@ -20,6 +20,8 @@ class LocalizationRepositoryImpl @Inject constructor(
         ) { localization, locale ->
             localization.toLocalizationModel(locale)
         }
+    override val localeFlow: Flow<Locale>
+        get() = localDataSource.localeFlow
 
     override suspend fun changeLocale(locale: Locale) {
         localDataSource.changeLocale(locale)

@@ -3,9 +3,10 @@ package com.phayarsar.domain.model
 import java.util.Locale
 
 data class LanguageModel (
-    val languageName:String,
-    val languageNotation:String,
+    val language:String,
+    val title:String,
+    val body:String,
     val image:Int,
-    val isChecked : Boolean,
+    val isSelected : Boolean,
     val locale: Locale
 )

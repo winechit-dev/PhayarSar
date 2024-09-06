@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface LocalizationRepository {
     val localizationFlow: Flow<LocalizationModel>
+
+    val localeFlow: Flow<Locale>
     suspend fun changeLocale(locale: Locale)
 }
