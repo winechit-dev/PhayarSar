@@ -23,6 +23,7 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
     private var localization: LocalizationModel by mutableStateOf(LocalizationModel())
+    private var screenState: ScreenState by mutableStateOf(ScreenState.SelectedLanguage)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +37,25 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.screenStateFlow.collectLatest {
+                    screenState = it
+                }
+            }
+        }
+
         setContent {
             // collect screen state
 
             PysTheme {
                 Localization(localization) {
                     NavigationController(
-                        screenState = ScreenState.Welcome // pass screen state
+                        screenState = screenState // pass screen state
                     )
                 }
             }
         }
-
-
     }
 }
 

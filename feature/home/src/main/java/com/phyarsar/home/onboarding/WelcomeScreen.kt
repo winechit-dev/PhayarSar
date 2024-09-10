@@ -17,18 +17,33 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.phayarsar.design_system.components.PysButton
 import com.phayarsar.design_system.theme.LocalSpacing
 import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.localization.Vocabulary
-import com.phyarsar.home.HomeEvent
+import com.phayarsar.localization.model.LocalizationModel
 import com.phyarsar.home.R
 
 @Composable
-fun WelcomeScreen(onClick: (HomeEvent) -> Unit) {
+fun WelcomeScreen(onClickGetStarted: () -> Unit) {
+
     val localization = Vocabulary.localization
-    // Create View Model
+
+    val viewModel: WelcomeViewModel = hiltViewModel()
+
+    WelcomeContent(
+        localization = localization,
+        onClickGetStarted = {
+            viewModel.getStartedStatus(true)
+            onClickGetStarted()
+        }
+    )
+}
+
+@Composable
+fun WelcomeContent(localization: LocalizationModel, onClickGetStarted: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -49,7 +64,8 @@ fun WelcomeScreen(onClick: (HomeEvent) -> Unit) {
 
         Text(
             text = localization.welcome_to_phayarsar,
-            style = MaterialTheme.typography.headlineLarge
+            style = MaterialTheme.typography.headlineLarge,
+            textAlign = TextAlign.Center
         )
 
         Spacer(modifier = Modifier.height(LocalSpacing.current.space30))
@@ -68,6 +84,7 @@ fun WelcomeScreen(onClick: (HomeEvent) -> Unit) {
             onClick = {
                 // save get started status via viemodel.getStarted()
                 // remove onClick(HomeEvent.OnNext)
+                onClickGetStarted()
             }
         )
     }
@@ -77,6 +94,6 @@ fun WelcomeScreen(onClick: (HomeEvent) -> Unit) {
 @Composable
 private fun WelcomeScreenPreview() {
     PysPreview {
-        WelcomeScreen {}
+        WelcomeContent(localization = LocalizationModel()) {}
     }
 }

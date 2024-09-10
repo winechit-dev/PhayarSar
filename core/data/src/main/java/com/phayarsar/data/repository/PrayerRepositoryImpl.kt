@@ -15,8 +15,11 @@ class PrayerRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource, @ApplicationContext private val context: Context
 ) : PrayerRepository {
     override val getStartedFlow: Flow<Boolean>
-        get() = flow { emit(false) }
+        get() = localDataSource.getStartedFlow
 
+    override suspend fun getStarted(isStarted: Boolean) {
+        localDataSource.getStarted(isStarted)
+    }
 
     override val getPrayerList: Flow<List<PrayerModel>>
         get() = localDataSource.getPrayerList.map {
@@ -27,8 +30,4 @@ class PrayerRepositoryImpl @Inject constructor(
         get() = localDataSource.getOtherPrayerList.map {
             it.toPrayerModelList()
         }
-
-    override suspend fun getStarted() {
-        //localDataSource.getStarted()
-    }
 }

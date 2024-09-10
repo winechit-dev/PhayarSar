@@ -8,9 +8,9 @@ import com.phayarsar.localization.model.LocalizationModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
-import kotlinx.coroutines.flow.map
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -28,15 +28,17 @@ class MainViewModel @Inject constructor(
     // collect get stated status
     val screenStateFlow = prayerRepository
         .getStartedFlow
-        .map { isGetStarted -> if (isGetStarted) ScreenState.Home else ScreenState.Welcome }
+        .map { isGetStarted ->
+            if (isGetStarted) ScreenState.Home else ScreenState.SelectedLanguage
+        }
         .stateIn(
             scope = viewModelScope,
-            initialValue = ScreenState.Welcome,
+            initialValue = ScreenState.SelectedLanguage,
             started = SharingStarted.WhileSubscribed(5_000)
         )
 }
 
 enum class ScreenState {
     Home,
-    Welcome
+    SelectedLanguage
 }

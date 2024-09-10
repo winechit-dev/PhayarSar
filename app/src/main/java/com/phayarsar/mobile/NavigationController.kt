@@ -12,8 +12,8 @@ import androidx.navigation.compose.rememberNavController
 import com.phyarsar.home.DetailScreenSample
 import com.phyarsar.home.HomeEvent
 import com.phyarsar.home.HomeScreen
-import com.phyarsar.home.SelectLanguageScreen
 import com.phyarsar.home.onboarding.WelcomeScreen
+import com.phyarsar.home.selectedLanguage.SelectLanguageScreen
 
 @Composable
 fun NavigationController(
@@ -24,7 +24,7 @@ fun NavigationController(
     val startRoute = remember(screenState) {
         when (screenState) {
             ScreenState.Home -> ScreenRoute.HomeScreen.route
-            ScreenState.Welcome -> ScreenRoute.WelcomeScreen.route
+            ScreenState.SelectedLanguage -> ScreenRoute.SelectLanguage.route
         }
     }
 
@@ -40,32 +40,16 @@ fun NavigationController(
 
             composable(ScreenRoute.SelectLanguage.route) {
                 SelectLanguageScreen(
-                    onClick = { homeEvent ->
-                        when (homeEvent) {
-                            is HomeEvent.OnNext -> {
-                                navController.navigate("welcome")
-                            }
-
-                            is HomeEvent.OnBack -> {
-                                navController.navigateUp()
-                            }
-                        }
+                    onClickNext = {
+                        navController.navigate("welcome")
                     }
                 )
             }
 
             composable(ScreenRoute.WelcomeScreen.route) {
                 WelcomeScreen(
-                    onClick = { homeEvent ->
-                        when (homeEvent) {
-                            is HomeEvent.OnNext -> {
-                                // navController.navigate("home")
-                            }
-
-                            is HomeEvent.OnBack -> {
-                                navController.navigateUp()
-                            }
-                        }
+                    onClickGetStarted = {
+                        navController.navigate("home")
                     }
                 )
             }
