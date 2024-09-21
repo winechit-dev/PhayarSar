@@ -12,4 +12,7 @@ dependencies{
 
     implementation(project(":core:domain"))
     implementation(libs.androidx.constriantlayout.compose)
+
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat.resource)
 }

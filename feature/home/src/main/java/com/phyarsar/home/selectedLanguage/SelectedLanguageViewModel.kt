@@ -28,7 +28,7 @@ class SelectedLanguageViewModel @Inject constructor(
 
     private var selectedLanguage = ""
 
-    init {
+   /* init {
         viewModelScope.launch {
             localizationRepository.localeFlow.collectLatest { locale ->
                 _uiState.update {
@@ -40,7 +40,7 @@ class SelectedLanguageViewModel @Inject constructor(
                 }
             }
         }
-    }
+    }*/
 
     fun selectLanguage(language: String) {
         selectedLanguage = language

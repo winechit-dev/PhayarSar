@@ -51,6 +51,8 @@ dependencies {
     implementation(project(":feature:home"))
     implementation(project(":feature:setting"))
 
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat.resource)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

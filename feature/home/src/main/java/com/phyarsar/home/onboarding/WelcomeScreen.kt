@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -63,7 +64,8 @@ fun WelcomeContent(localization: LocalizationModel, onClickGetStarted: () -> Uni
         Spacer(modifier = Modifier.height(LocalSpacing.current.space38))
 
         Text(
-            text = localization.welcome_to_phayarsar,
+            //text = localization.welcome_to_phayarsar,
+            text = stringResource(id = R.string.welcome_to_phayarsar),
             style = MaterialTheme.typography.headlineLarge,
             textAlign = TextAlign.Center
         )
@@ -71,7 +73,8 @@ fun WelcomeContent(localization: LocalizationModel, onClickGetStarted: () -> Uni
         Spacer(modifier = Modifier.height(LocalSpacing.current.space30))
 
         Text(
-            text = localization.onboarding_desc,
+            //text = localization.onboarding_desc,
+            text = stringResource(id = R.string.onboarding_desc),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )
@@ -79,7 +82,8 @@ fun WelcomeContent(localization: LocalizationModel, onClickGetStarted: () -> Uni
         Spacer(modifier = Modifier.weight(1f))
 
         PysButton(
-            text = localization.btn_get_started,
+            //text = localization.btn_get_started,
+            text = stringResource(id = R.string.btn_get_started),
             modifier = Modifier.fillMaxWidth(),
             onClick = {
                 // save get started status via viemodel.getStarted()
