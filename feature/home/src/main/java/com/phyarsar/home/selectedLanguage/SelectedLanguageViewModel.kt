@@ -51,9 +51,10 @@ class SelectedLanguageViewModel @Inject constructor(
                 )
             }
         }
+        changeLocale()
     }
 
-    fun changeLocale() {
+    private fun changeLocale() {
         viewModelScope.launch(Dispatchers.IO) {
             if (selectedLanguage.isNotEmpty()) {
                 localizationRepository.changeLocale(Locale(selectedLanguage))

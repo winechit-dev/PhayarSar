@@ -50,10 +50,7 @@ fun SelectLanguageScreen(onClickNext: () -> Unit) {
                 colors = MaterialTheme.colorScheme.surfaceContainerLowest,
                 actions = {
                     PysTextButton(
-                        onClick = {
-                            viewModel.changeLocale()
-                            onClickNext()
-                        },
+                        onClick = onClickNext,
                         text = localization.next
                     )
                 }
@@ -109,10 +106,8 @@ fun SelectLanguageItem(languageItem: LanguageModel, onSelected: (LanguageModel) 
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable { onSelected(languageItem) }
             .padding(LocalSpacing.current.space20)
-            .clickable {
-                onSelected(languageItem)
-            }
     ) {
         val (imgFlag, englishName, myanmarName, imgCheck) = createRefs()
 
@@ -190,6 +185,6 @@ private fun SelectLanguageItemPreview() {
 @Composable
 private fun SelectLanguageContentPreview() {
     PysPreview {
-        SelectedLanguageContent(languageList,PaddingValues(8.dp)) {}
+        SelectedLanguageContent(languageList, PaddingValues(8.dp)) {}
     }
 }
