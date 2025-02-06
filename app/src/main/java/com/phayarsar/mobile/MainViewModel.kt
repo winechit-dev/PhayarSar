@@ -25,6 +25,7 @@ class MainViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5_000)
         )
 
+    // collect get stated status
     val screenStateFlow = prayerRepository
         .getStartedFlow
         .map { isGetStarted ->
@@ -32,13 +33,12 @@ class MainViewModel @Inject constructor(
         }
         .stateIn(
             scope = viewModelScope,
-            initialValue = ScreenState.Splash,
+            initialValue = ScreenState.SelectedLanguage,
             started = SharingStarted.WhileSubscribed(5_000)
         )
 }
 
 enum class ScreenState {
-    Splash,
     Home,
     SelectedLanguage
 }

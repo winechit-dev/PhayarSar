@@ -13,7 +13,6 @@ import androidx.navigation.compose.rememberNavController
 import com.phyarsar.home.DetailScreenSample
 import com.phyarsar.home.HomeEvent
 import com.phyarsar.home.HomeScreen
-import com.phyarsar.home.onboarding.SplashScreen
 import com.phyarsar.home.onboarding.WelcomeScreen
 import com.phyarsar.home.selectedLanguage.SelectLanguageScreen
 
@@ -25,7 +24,6 @@ fun NavigationController(
     val navController = rememberNavController()
     val startRoute = remember(screenState) {
         when (screenState) {
-            ScreenState.Splash -> ScreenRoute.Splash.route
             ScreenState.Home -> ScreenRoute.HomeScreen.route
             ScreenState.SelectedLanguage -> ScreenRoute.SelectLanguage.route
         }
@@ -41,10 +39,6 @@ fun NavigationController(
             startDestination = startRoute,
             modifier = Modifier.padding(it)
         ) {
-
-            composable(ScreenRoute.Splash.route) {
-                SplashScreen()
-            }
 
             composable(ScreenRoute.SelectLanguage.route) {
                 SelectLanguageScreen(
@@ -86,7 +80,6 @@ fun NavigationController(
 }
 
 enum class ScreenRoute(val route: String) {
-    Splash(route = "splash"),
     SelectLanguage(route = "selectLanguage"),
     WelcomeScreen(route = "welcome"),
     HomeScreen(route = "home"),
