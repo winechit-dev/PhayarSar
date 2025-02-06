@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -27,7 +28,12 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val splashScreen = installSplashScreen()
         enableEdgeToEdge()
+
+        splashScreen.setKeepOnScreenCondition {
+            screenState.name == ScreenState.Splash.name
+        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
@@ -46,12 +52,10 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            // collect screen state
-
             PysTheme {
                 Localization(localization) {
                     NavigationController(
-                        screenState = screenState // pass screen state
+                        screenState = screenState
                     )
                 }
             }
