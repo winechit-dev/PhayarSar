@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -56,7 +58,8 @@ fun HomeContent(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = LocalSpacing.current.space20)
+            .statusBarsPadding()
+            .navigationBarsPadding()
             .padding(horizontal = LocalSpacing.current.space20)
     ) {
         item {
@@ -104,7 +107,7 @@ fun HeaderSection(
         ) {
             Text(
                 text = localization.phayarsar,
-                style = MaterialTheme.typography.headlineLarge
+                style = MaterialTheme.typography.headlineLarge,
             )
 
             Box(
@@ -131,7 +134,7 @@ fun HeaderSection(
             text = String.format(localization.today_pray_time_x, 0),
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier
-                .padding(top = LocalSpacing.current.space8)
+                .padding(top = LocalSpacing.current.space4)
         )
 
         HorizontalDivider(
