@@ -15,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.phayarsar.design_system.theme.PysTheme
 import com.phayarsar.localization.Localization
 import com.phayarsar.localization.model.LocalizationModel
+import com.phayarsar.mobile.navigation.NavigationController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

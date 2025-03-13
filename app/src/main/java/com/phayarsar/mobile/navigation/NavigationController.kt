@@ -1,4 +1,4 @@
-package com.phayarsar.mobile
+package com.phayarsar.mobile.navigation
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.phayarsar.mobile.ScreenState
+import com.phayarsar.setting.SettingScreen
 import com.phyarsar.home.DetailScreenSample
 import com.phyarsar.home.HomeEvent
 import com.phyarsar.home.HomeScreen
@@ -33,13 +35,14 @@ fun NavigationController(
 
     Scaffold(
         contentWindowInsets = WindowInsets(0),
-        modifier = Modifier.fillMaxSize()
-    ) {
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = { BottomNavigation(navController = navController) }
+    ) { innerPadding->
 
         NavHost(
             navController = navController,
             startDestination = startRoute,
-            modifier = Modifier.padding(it)
+            modifier = Modifier.padding(innerPadding)
         ) {
 
             composable(ScreenRoute.Splash.route) {
@@ -81,6 +84,10 @@ fun NavigationController(
             composable(ScreenRoute.DetailScreen.route) {
                 DetailScreenSample()
             }
+
+            composable(ScreenRoute.SettingScreen.route) {
+                SettingScreen()
+            }
         }
     }
 }
@@ -90,6 +97,6 @@ enum class ScreenRoute(val route: String) {
     SelectLanguage(route = "selectLanguage"),
     WelcomeScreen(route = "welcome"),
     HomeScreen(route = "home"),
-    DetailScreen(route = "detail")
-
+    DetailScreen(route = "detail"),
+    SettingScreen(route = "setting")
 }
