@@ -3,20 +3,26 @@ package com.phayarsar.mobile.navigation
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -24,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.phayarsar.design_system.theme.PysPreview
 import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.mobile.R
 
@@ -38,39 +45,41 @@ fun BottomNavigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 66.dp, vertical = 20.dp)
-            .background(
-                color = MaterialTheme.colorScheme.primary,
-                shape = RoundedCornerShape(40.dp)
-            )
-            .padding(4.dp),
-        horizontalArrangement = Arrangement.Center
+            .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.1f)),
+        contentAlignment = Alignment.Center,
     ) {
+        Row(
+            modifier = Modifier
+                .padding(bottom = 40.dp)
+                .background(
+                    color = MaterialTheme.colorScheme.primary,
+                    shape = RoundedCornerShape(40.dp)
+                )
+                .padding(4.dp),
+        ) {
 
-        bottomNavRouteList.forEach { bottomNavRoute ->
+            bottomNavRouteList.forEach { bottomNavRoute ->
 
-            NavigationItem(
-                bottomNavRoute = bottomNavRoute,
-                onClick = {
-                    navController.navigate(bottomNavRoute.route) {
-                        // Pop up to the start destination of the graph to
-                        // avoid building up a large stack of destinations
-                        // on the back stack as users select items
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
+                NavigationItem(
+                    bottomNavRoute = bottomNavRoute,
+                    onClick = {
+                        navController.navigate(bottomNavRoute.route) {
+                            // Pop up to the start destination of the graph to avoid building up a large stack of destinations on the back stack as users select items
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                            // Avoid multiple copies of the same destination when reselecting the same item
+                            launchSingleTop = true
+                            // Restore state when reselecting a previously selected item
+                            restoreState = true
                         }
-                        // Avoid multiple copies of the same destination when
-                        // reselecting the same item
-                        launchSingleTop = true
-                        // Restore state when reselecting a previously selected item
-                        restoreState = true
-                    }
-                },
-                isSelected = currentDestination?.route == bottomNavRoute.route
-            )
+                    },
+                    isSelected = currentDestination?.route == bottomNavRoute.route
+                )
+            }
         }
     }
 }
@@ -82,7 +91,6 @@ fun NavigationItem(
     isSelected: Boolean
 ) {
     Row(
-        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .background(
                 color = if (isSelected) MaterialTheme.colorScheme.onPrimary else Color.Transparent,
@@ -120,13 +128,17 @@ fun NavigationItem(
 @ThemePreviews
 @Composable
 fun PreviewNavigationItem() {
-    NavigationItem(BottomNavRoute.Home, {}, isSelected = true)
+    PysPreview {
+        NavigationItem(BottomNavRoute.Home, {}, isSelected = true)
+    }
 }
 
 @ThemePreviews
 @Composable
 fun PreviewBottomNavigation() {
-    BottomNavigation(NavHostController(LocalContext.current))
+    PysPreview {
+        BottomNavigation(NavHostController(LocalContext.current))
+    }
 }
 
 
