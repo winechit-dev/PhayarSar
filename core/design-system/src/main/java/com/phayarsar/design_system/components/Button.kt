@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.Button
@@ -98,13 +99,14 @@ fun PysOutlinedButton(
             if (hapticFeedback) haptic.performHapticFeedback(HapticFeedbackType.LongPress)
             onClick()
         },
+        shape = RoundedCornerShape(16.dp),
         colors = ButtonDefaults.outlinedButtonColors(
-            contentColor = MaterialTheme.colorScheme.onBackground,
+            contentColor = MaterialTheme.colorScheme.primary,
         ),
         border = BorderStroke(
             width = PysButtonDefaults.OutlinedButtonBorderWidth,
             color = if (enabled) {
-                MaterialTheme.colorScheme.outline
+                MaterialTheme.colorScheme.primary
             } else {
                 MaterialTheme.colorScheme.onSurface.copy(
                     alpha = PysButtonDefaults.DISABLED_OUTLINED_BUTTON_BORDER_ALPHA,

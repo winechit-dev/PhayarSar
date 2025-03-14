@@ -28,6 +28,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.phayarsar.design_system.components.AnnotatedStyleText
 import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.components.PysOutlinedButton
 import com.phayarsar.design_system.theme.LocalSpacing
@@ -122,7 +123,7 @@ fun HeaderSection(
                 Icon(
                     painter = painterResource(id = R.drawable.ic_search),
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onPrimary,
+                    tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier
                         .size(24.dp)
                         .align(Alignment.Center)
@@ -130,9 +131,9 @@ fun HeaderSection(
             }
         }
 
-        Text(
-            text = String.format(localization.today_pray_time_x, 0),
-            style = MaterialTheme.typography.bodyLarge,
+        AnnotatedStyleText(
+            text = localization.today_pray_time,
+            time = localization.x_min.replace("{$}", "0"),
             modifier = Modifier
                 .padding(top = LocalSpacing.current.space4)
         )
@@ -175,11 +176,13 @@ fun AddWorshipPlanCard(
             Icon(
                 painter = painterResource(id = R.drawable.ic_playlist_add_24),
                 contentDescription = "Add Worship Plan",
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(32.dp)
             )
             Text(
                 text = localization.worship_plan_helps_you_pray,
                 style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.weight(1f)
             )
             PysOutlinedButton(

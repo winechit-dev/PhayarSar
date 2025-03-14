@@ -84,10 +84,7 @@ fun PrayerCard(
                     Text(
                         style = MaterialTheme.typography.labelMedium,
                         color = Color.White,
-                        text = String.format(
-                            localization.x_min,
-                            duration
-                        )
+                        text = localization.x_min.replace("{$}", duration)
                     )
                 }
                 Text(
@@ -134,7 +131,7 @@ private fun PrayerCollectionSection(
                 color = charcoal
             )
             Text(
-                text = localization.plus_x_more.format(list.size - 3),
+                text = localization.plus_x_more.replace("{$}", "${list.size - 3}"),
                 style = MaterialTheme.typography.labelMedium,
                 color = charcoal
             )
@@ -151,7 +148,8 @@ private fun PrayerCollectionSection(
 private fun PrayerListSection(list: List<PrayerModel>) {
     PysCard(
         color = Color.Black.copy(alpha = 0.4f),
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .heightIn(max = 200.dp)// Added height constraint to prevent infinite height
     ) {
         LazyColumn(
