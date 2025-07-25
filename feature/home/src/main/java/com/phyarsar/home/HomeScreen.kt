@@ -20,6 +20,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +29,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.phayarsar.design_system.components.AnnotatedStyleText
 import com.phayarsar.design_system.components.PysCard
 import com.phayarsar.design_system.components.PysOutlinedButton
@@ -41,12 +44,38 @@ import com.phyarsar.home.components.PrayerCard
 import com.phyarsar.home.components.otherPrayerSection
 
 @Composable
-fun HomeScreen(onClick: (HomeEvent) -> Unit) {
+fun HomeScreen(
+    onClick: (HomeEvent) -> Unit
+) {
 
     val viewModel: HomeViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    HomeContent(uiState = uiState, onClick = onClick)
+    HomeContent(
+        uiState = uiState,
+        onClick = onClick
+        //{ homeEvent ->
+//             viewModel.homeEvent(homeEvent)
+//        }
+    )
+
+    /*LaunchedEffect(Unit) {
+        viewModel.navigationEvent.collect { event ->
+            when (event) {
+                is HomeEvent.GoToDetails -> {
+                    navController.navigate("detail")
+                }
+
+                is HomeEvent.OnSearch -> {
+                    navController.navigate("detail")
+                }
+
+                else -> {
+                    // Handle search action
+                }
+            }
+        }
+    }*/
 }
 
 @Composable
@@ -79,15 +108,14 @@ fun HomeContent(
                 subtitle = localization.prayerSubTitle,
                 duration = "8",
                 list = uiState.prayerList,
-                modifier = Modifier.padding(bottom = LocalSpacing.current.space20)
+                modifier = Modifier.padding(bottom = LocalSpacing.current.space20),
+                onClick = onClick
             )
         }
 
         otherPrayerSection(
             list = uiState.otherPrayerList,
-            onClick = {
-                onClick(HomeEvent.GoToDetails(it))
-            }
+            onClick = onClick
         )
     }
 }

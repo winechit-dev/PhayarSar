@@ -6,3 +6,10 @@ plugins {
 android {
     namespace = "com.phayarsar.setting"
 }
+
+dependencies{
+
+    implementation(project(":core:domain"))
+    implementation(project(":core:common"))
+    implementation(libs.androidx.constriantlayout.compose)
+}

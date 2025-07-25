@@ -1,7 +1,7 @@
 package com.phyarsar.home.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,12 +27,13 @@ import com.phayarsar.design_system.theme.ThemePreviews
 import com.phayarsar.design_system.utils.bounceClick
 import com.phayarsar.domain.model.PrayerModel
 import com.phayarsar.localization.Vocabulary.localization
+import com.phyarsar.home.HomeEvent
 import com.phyarsar.home.PreviewData
 import com.phyarsar.home.R
 
 fun LazyListScope.otherPrayerSection(
     list: List<PrayerModel>,
-    onClick: (PrayerModel) -> Unit
+    onClick: (HomeEvent) -> Unit
 ) {
     item {
         Row(
@@ -62,13 +63,11 @@ fun LazyListScope.otherPrayerSection(
     ) { item ->
         OtherPrayerItem(item = item, onClick = onClick)
     }
-
 }
 
 @Composable
-private fun OtherPrayerItem(item: PrayerModel, onClick: (PrayerModel) -> Unit) {
+private fun OtherPrayerItem(item: PrayerModel, onClick: (HomeEvent) -> Unit) {
     PysCard(
-        onClick = { onClick(item) },
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surfaceVariant,
         modifier = Modifier.padding(top = LocalSpacing.current.space8)
@@ -80,29 +79,22 @@ private fun OtherPrayerItem(item: PrayerModel, onClick: (PrayerModel) -> Unit) {
                 .padding(LocalSpacing.current.space12)
                 .fillMaxWidth()
                 .bounceClick()
+                .clickable { onClick(HomeEvent.GoToDetails(item)) },
         ) {
             Icon(
                 painter = painterResource(R.drawable.ic_book_closed),
                 contentDescription = null,
                 modifier = Modifier.size(24.dp),
             )
-            Column {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(LocalSpacing.current.space12),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = item.label,
-                        style = MaterialTheme.typography.labelLarge,
-                        modifier = Modifier.weight(1f),
-                    )
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_navigate_next_24),
-                        contentDescription = null
-                    )
-                }
-            }
+            Text(
+                text = item.label,
+                style = MaterialTheme.typography.labelLarge,
+                modifier = Modifier.weight(1f),
+            )
+            Icon(
+                painter = painterResource(id = R.drawable.ic_navigate_next_24),
+                contentDescription = null
+            )
         }
     }
 }

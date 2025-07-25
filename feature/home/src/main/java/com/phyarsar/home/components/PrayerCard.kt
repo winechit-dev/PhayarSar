@@ -32,6 +32,7 @@ import com.phayarsar.design_system.utils.bounceClick
 import com.phayarsar.domain.model.PrayerModel
 import com.phayarsar.localization.Vocabulary
 import com.phayarsar.localization.model.LocalizationModel
+import com.phyarsar.home.HomeEvent
 import com.phyarsar.home.PreviewData
 import com.phyarsar.home.R
 
@@ -43,7 +44,8 @@ fun PrayerCard(
     duration: String,
     list: List<PrayerModel>,
     color: Color = MaterialTheme.colorScheme.primary,
-    localization: LocalizationModel = Vocabulary.localization
+    localization: LocalizationModel = Vocabulary.localization,
+    onClick: (HomeEvent) -> Unit
 ) {
     val gradient = Brush.verticalGradient(
         colors = listOf(
@@ -99,21 +101,20 @@ fun PrayerCard(
                 color = Color.White,
                 thickness = 0.5.dp
             )
-            PrayerListSection(list = list.take(3))
-            PrayerCollectionSection(onClick = {}, list = list)
+            PrayerListSection(list = list.take(3), onClick = onClick)
+            PrayerCollectionSection(onClick = onClick, list = list)
         }
     }
 }
 
 @Composable
 private fun PrayerCollectionSection(
-    onClick: () -> Unit,
+    onClick: (HomeEvent) -> Unit,
     localization: LocalizationModel = Vocabulary.localization,
     list: List<PrayerModel>
 ) {
     if (list.size <= 3) return
     PysCard(
-        onClick = onClick,
         color = Color.White,
         shape = MaterialTheme.shapes.medium,
     ) {
@@ -145,7 +146,7 @@ private fun PrayerCollectionSection(
 }
 
 @Composable
-private fun PrayerListSection(list: List<PrayerModel>) {
+private fun PrayerListSection(list: List<PrayerModel>, onClick: (HomeEvent) -> Unit) {
     PysCard(
         color = Color.Black.copy(alpha = 0.4f),
         modifier = Modifier
@@ -157,9 +158,9 @@ private fun PrayerListSection(list: List<PrayerModel>) {
         ) {
             items(list) {
                 PrayerItem(
-                    label = it.label,
+                    item = it,
                     showDivider = it != list.last(),
-                    onClick = {}
+                    onClick = onClick
                 )
             }
         }
@@ -168,14 +169,14 @@ private fun PrayerListSection(list: List<PrayerModel>) {
 
 
 @Composable
-private fun PrayerItem(label: String, showDivider: Boolean = true, onClick: () -> Unit) {
+private fun PrayerItem(item: PrayerModel, showDivider: Boolean = true, onClick: (HomeEvent) -> Unit) {
     Row(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .bounceClick()
-            .clickable(onClick = onClick)
+            .clickable{ onClick(HomeEvent.GoToDetails(item))}
     ) {
         Icon(
             painter = painterResource(id = R.drawable.ic_pray),
@@ -192,7 +193,7 @@ private fun PrayerItem(label: String, showDivider: Boolean = true, onClick: () -
                     .padding(vertical = 8.dp)
             ) {
                 Text(
-                    text = label,
+                    text = item.label,
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color.White,
                     modifier = Modifier.weight(1f),
@@ -218,7 +219,8 @@ private fun PrayerCardPreview() {
             subtitle = "ဘုရားကန်တော့",
             duration = "8",
             list = PreviewData.previewPrayerList,
-            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
+            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+            onClick = {}
         )
     }
 }

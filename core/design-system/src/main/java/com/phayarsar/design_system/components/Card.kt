@@ -31,7 +31,6 @@ fun PysCard(
 ) {
     Surface(
         modifier = modifier
-            .bounceClick()
             .softShadow(
                 shape = shape,
                 shadowColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
@@ -42,7 +41,8 @@ fun PysCard(
                 hapticFeedbackEnabled = true,
                 onClick = onClick,
                 enabled = true
-            ),
+            )
+            .bounceClick(),
         color = color
     ) {
         content()

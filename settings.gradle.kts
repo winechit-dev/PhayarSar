@@ -29,3 +29,4 @@ include(":feature:setting")
 
 include(":core:data")
 include(":core:domain")
+include(":core:common")

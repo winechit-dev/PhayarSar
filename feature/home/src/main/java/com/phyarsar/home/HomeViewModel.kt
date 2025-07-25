@@ -1,9 +1,9 @@
 package com.phyarsar.home
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.phayarsar.domain.PrayerRepository
 import com.phayarsar.domain.model.PrayerModel
+import com.phayarsar.common.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val prayerRepository: PrayerRepository
-) : ViewModel() {
+) : BaseViewModel<HomeEvent>() {
 
     /*var uiState = combine(
         prayerRepository.getPrayerList,
@@ -44,8 +44,6 @@ class HomeViewModel @Inject constructor(
         getOtherPrayerList()*/
     }
 
-
-
     private fun getPrayerList() {
         viewModelScope.launch(Dispatchers.IO) {
             prayerRepository.getPrayerList.collectLatest { prayerList ->
@@ -66,6 +64,11 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun homeEvent(event: HomeEvent) {
+        viewModelScope.launch(Dispatchers.IO) {
+            emitEvent(event)
+        }
+    }
 
 }
 
