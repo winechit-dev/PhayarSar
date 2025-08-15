@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,18 +15,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.phayarsar.mobile.MainViewModel
+import androidx.navigation.toRoute
 import com.phayarsar.mobile.ScreenState
 import com.phayarsar.setting.SettingScreen
-import com.phyarsar.home.detail.DetailScreen
 import com.phyarsar.home.HomeEvent
 import com.phyarsar.home.HomeScreen
-import com.phyarsar.home.HomeViewModel
+import com.phyarsar.home.detail.Detail
+import com.phyarsar.home.detail.DetailScreen
 import com.phyarsar.home.onboarding.SplashScreen
 import com.phyarsar.home.onboarding.WelcomeScreen
 import com.phyarsar.home.selectedLanguage.SelectLanguageScreen
@@ -57,14 +55,15 @@ fun NavigationController(
     Scaffold(
         contentWindowInsets = WindowInsets(0),
         modifier = Modifier.fillMaxSize(),
-        bottomBar = { if(showBottomBar) BottomNavigation(navController = navController) },
+        bottomBar = { if (showBottomBar) BottomNavigation(navController = navController) },
         containerColor = Color.Transparent
-    ) { innerPadding->
+    ) { innerPadding ->
 
         NavHost(
             navController = navController,
             startDestination = startRoute,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .padding(innerPadding)
                 .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.1f))
         ) {
 
@@ -93,14 +92,20 @@ fun NavigationController(
                     onClick = { homeEvent ->
                         when (homeEvent) {
                             is HomeEvent.GoToDetails -> {
-                                navController.navigate("detail")
+                                //navController.navigate("detail")
+                                navController.navigate(
+                                    Detail(
+                                        homeEvent.prayerModel.id,
+                                        homeEvent.prayerModel.label
+                                    )
+                                )
                             }
 
                             is HomeEvent.OnBack -> {
                                 navController.navigateUp()
                             }
 
-                            else ->{
+                            else -> {
                                 Log.d("HomeScreen", "HomeScreen: no event")
                             }
                         }
@@ -108,8 +113,9 @@ fun NavigationController(
                 )
             }
 
-            composable(ScreenRoute.DetailScreen.route) {
-                DetailScreen()
+            composable<Detail> {
+                val args = it.toRoute<Detail>()
+                DetailScreen(args)
             }
 
             composable(ScreenRoute.SettingScreen.route) {
