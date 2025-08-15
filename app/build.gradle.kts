@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.phayarsar.mobile"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.phayarsar.mobile"
